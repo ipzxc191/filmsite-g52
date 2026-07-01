@@ -1,0 +1,17 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+    <meta charset="UTF-8">
+    <title>Каталог фильмов</title>
+</head>
+<body>
+    <h1>Каталог фильмов</h1>
+    <p>Всего фильмов: {{ total }}</p>
+
+    <ul>
+        {% for film in films %}
+            <li>{{ film.title }} ({{ film.year }})</li>
+        {% endfor %}
+    </ul>
+</body>
+</html>

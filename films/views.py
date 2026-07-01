@@ -1,35 +1,44 @@
 # films/views.py
 from django.http import HttpResponse, Http404
-from django.shortcuts import redirect
+from django.shortcuts import redirect, render
 from django.urls import reverse
 
 
-FILMS = {
-    1: 'Крёстный отец',
-    2: 'Список Шиндлера',
-    3: 'Побег из Шоушенка',
-}
+FILMS = [
+    {'id': 1, 'title': 'Крёстный отец', 'year': 1972, 'description': 'Классика мирового кино.'},
+    {'id': 2, 'title': 'Список Шиндлера', 'year': 1993, 'description': 'История Оскара Шиндлера.'},
+    {'id': 3, 'title': 'Побег из Шоушенка', 'year': 1994, 'description': 'История о надежде и свободе.'},
+]
 
 
 def index(request):
-    return HttpResponse('Добро пожаловать на сайт фильмов!')
+    context = {
+        'title': 'Лучшие фильмы всех времён',
+    }
+    return render(request, 'films/index.html', context)
 
 
 def about(request):
-    return HttpResponse('Сайт-каталог фильмов. Здесь собраны лучшие фильмы всех времён.')
+    context = {
+        'title': 'О нашем сайте',
+        'film_count': len(FILMS),
+    }
+    return render(request, 'films/about.html', context)
 
 
 def film_list(request):
-    genre = request.GET.get('genre', '')
-    year = request.GET.get('year', '')
-    response_text = f'Жанр: {genre}, год: {year}' if genre or year else 'Все фильмы'
-    return HttpResponse(response_text)
+    context = {
+        'films': FILMS,
+        'total': len(FILMS),
+    }
+    return render(request, 'films/film_list.html', context)
 
 
 def film_detail(request, film_id):
-    if film_id not in FILMS:
-        raise Http404(f'Фильм с id={film_id} не найден')
-    return HttpResponse(f'Фильм: {FILMS[film_id]}')
+    film = next((f for f in FILMS if f['id'] == film_id), None)
+    if film is None:
+        raise Http404('Фильм не найден')
+    return render(request, 'films/film_detail.html', {'film': film})
 
 
 def add_film(request):
