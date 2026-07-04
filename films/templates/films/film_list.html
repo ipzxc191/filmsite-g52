@@ -5,13 +5,29 @@
     <title>Каталог фильмов</title>
 </head>
 <body>
-    <h1>Каталог фильмов</h1>
-    <p>Всего фильмов: {{ total }}</p>
+    <nav>
+        <a href="{% url 'index' %}">Главная</a> |
+        <a href="{% url 'film_list' %}">Каталог</a> |
+        <a href="{% url 'about' %}">О сайте</a>
+    </nav>
 
-    <ul>
+    <h1>Каталог фильмов</h1>
+
+    {% if films %}
+        <p>Всего фильмов: {{ films|length }}</p>
+        <ul>
         {% for film in films %}
-            <li>{{ film.title }} ({{ film.year }})</li>
+            <li>
+                <a href="{% url 'film_detail' film_id=film.id %}">
+                    {{ film.title }}
+                </a>
+                ({{ film.year }})
+                {% if film.year < 2000 %}— классика{% endif %}
+            </li>
         {% endfor %}
-    </ul>
+        </ul>
+    {% else %}
+        <p>В каталоге пока нет фильмов.</p>
+    {% endif %}
 </body>
 </html>

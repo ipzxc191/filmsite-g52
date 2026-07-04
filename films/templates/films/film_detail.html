@@ -5,9 +5,16 @@
     <title>{{ film.title }}</title>
 </head>
 <body>
+    <nav>
+        <a href="{% url 'index' %}">Главная</a> |
+        <a href="{% url 'film_list' %}">Каталог</a> |
+        <a href="{% url 'about' %}">О сайте</a>
+    </nav>
+
     <h1>{{ film.title }}</h1>
     <p>Год выпуска: {{ film.year }}</p>
-    <p>{{ film.description }}</p>
-    <a href="/films/">← Назад к каталогу</a>
+    <p>{{ film.description|default:"Описание отсутствует." }}</p>
+
+    <a href="{% url 'film_list' %}">← Назад к каталогу</a>
 </body>
 </html>
