@@ -1,20 +1,10 @@
-<!DOCTYPE html>
-<html lang="ru">
-<head>
-    <meta charset="UTF-8">
-    <title>{{ film.title }}</title>
-</head>
-<body>
-    <nav>
-        <a href="{% url 'index' %}">Главная</a> |
-        <a href="{% url 'film_list' %}">Каталог</a> |
-        <a href="{% url 'about' %}">О сайте</a>
-    </nav>
+{% extends 'base.html' %}
 
+{% block title %}{{ film.title }} — Сайт фильмов{% endblock %}
+
+{% block content %}
     <h1>{{ film.title }}</h1>
     <p>Год выпуска: {{ film.year }}</p>
     <p>{{ film.description|default:"Описание отсутствует." }}</p>
-
-    <a href="{% url 'film_list' %}">← Назад к каталогу</a>
-</body>
-</html>
+    <a href="{% url 'films:film_list' %}">← Назад к каталогу</a>
+{% endblock %}

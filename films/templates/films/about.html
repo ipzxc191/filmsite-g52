@@ -1,19 +1,10 @@
-<!DOCTYPE html>
-<html lang="ru">
-<head>
-    <meta charset="UTF-8">
-    <title>{{ title }}</title>
-</head>
-<body>
-    <nav>
-        <a href="{% url 'index' %}">Главная</a> |
-        <a href="{% url 'film_list' %}">Каталог</a> |
-        <a href="{% url 'about' %}">О сайте</a>
-    </nav>
+{% extends 'base.html' %}
 
+{% block title %}{{ film.title }} — Сайт фильмов{% endblock %}
+
+{% block content %}
     <h1>{{ title }}</h1>
     <p>Это учебный проект — каталог фильмов, созданный на Django.</p>
     <p>Сейчас в каталоге {{ film_count }} фильма.</p>
-    <a href="/">← На главную</a>
-</body>
-</html>
+    <a href="{% url 'films:index' %}">← На главную</a>
+{% endblock %}

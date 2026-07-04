@@ -1,17 +1,9 @@
-<!DOCTYPE html>
-<html lang="ru">
-<head>
-    <meta charset="UTF-8">
-    <title>Сайт фильмов</title>
-</head>
-<body>
-    <nav>
-        <a href="{% url 'index' %}">Главная</a> |
-        <a href="{% url 'film_list' %}">Каталог</a> |
-        <a href="{% url 'about' %}">О сайте</a>
-    </nav>
+{% extends 'base.html' %}
 
+{% block title %}Главная — Сайт фильмов{% endblock %}
+
+{% block content %}
     <h1>{{ title }}</h1>
     <p>Добро пожаловать на сайт фильмов!</p>
-</body>
-</html>
+    <a href="{% url 'films:film_list' %}">Перейти к каталогу →</a>
+{% endblock %}
