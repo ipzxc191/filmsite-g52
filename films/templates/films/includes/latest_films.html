@@ -1,0 +1,12 @@
+{% load film_tags %}
+
+<div class="latest-films">
+    <h3>Последние добавленные</h3>
+    <ul>
+    {% for film in films %}
+        <li><a href="{% url 'films:film_detail' film_id=film.id %}">{{ film.title }}</a></li>
+    {% empty %}
+        <li>Фильмов пока нет.</li>
+    {% endfor %}
+    </ul>
+</div>

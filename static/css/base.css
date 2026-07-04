@@ -1,0 +1,37 @@
+* {
+    box-sizing: border-box;
+    margin: 0;
+    padding: 0;
+}
+
+body {
+    font-family: Arial, sans-serif;
+    max-width: 960px;
+    margin: 0 auto;
+    padding: 20px;
+    color: #333;
+}
+
+nav {
+    padding: 12px 0;
+    border-bottom: 1px solid #ddd;
+    margin-bottom: 24px;
+}
+
+nav a {
+    color: #333;
+    text-decoration: none;
+    margin-right: 12px;
+}
+
+nav a:hover {
+    text-decoration: underline;
+}
+
+footer {
+    margin-top: 40px;
+    padding-top: 16px;
+    border-top: 1px solid #ddd;
+    color: #999;
+    font-size: 14px;
+}

@@ -1,12 +1,15 @@
+{% load static %}
+{% load film_tags %}
 <!DOCTYPE html>
 <html lang="ru">
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>{% block title %}Сайт фильмов{% endblock %}</title>
+    <link rel="stylesheet" href="{% static 'css/base.css' %}">
+    {% block extra_css %}{% endblock %}
 </head>
 <body>
-
     <header>
         <nav>
             <a href="{% url 'films:index' %}">Главная</a> |
@@ -19,9 +22,14 @@
         {% block content %}{% endblock %}
     </main>
 
+    <aside>
+    {% latest_films 3 %}
+    </aside>
+
     <footer>
-        <p>© 2024 Сайт фильмов</p>
+        <p>© {% current_year %} Сайт фильмов</p>
     </footer>
 
+    {% block extra_js %}{% endblock %}
 </body>
 </html>
