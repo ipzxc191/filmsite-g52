@@ -12,6 +12,26 @@ class Genre(models.Model):
     def __str__(self):
         return self.name
 
+class FilmManager(models.Manager):
+
+    def high_rated(self):
+        """Фильмы с рейтингом 8.0 и выше."""
+        return self.filter(rating__gte=8.0)
+
+    def by_year(self, year):
+        """Фильмы конкретного года."""
+        return self.filter(year=year)
+
+    def recent(self, count=5):
+        """Последние добавленные фильмы."""
+        return self.order_by('-created_at')[:count]
+    
+    def search(self, query):
+        """Поиск по названию и описанию без учёта регистра."""
+        return self.filter(
+            models.Q(title__icontains=query) |
+            models.Q(description__icontains=query)
+        )
 
 class Film(models.Model):
     title = models.CharField(max_length=200, verbose_name='Название')
@@ -25,6 +45,8 @@ class Film(models.Model):
     )
     slug = models.SlugField(max_length=200, unique=True, blank=True)
     created_at = models.DateTimeField(auto_now_add=True, verbose_name='Дата добавления')
+
+    objects = FilmManager()
 
     class Meta:
         ordering = ['-year']

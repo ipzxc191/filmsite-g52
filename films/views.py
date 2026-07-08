@@ -1,14 +1,9 @@
 # films/views.py
 from django.http import HttpResponse, Http404
-from django.shortcuts import redirect, render
+from django.shortcuts import get_object_or_404, redirect, render
 from django.urls import reverse
 
-
-FILMS = [
-    {'id': 1, 'title': 'Крёстный отец', 'year': 1972, 'description': 'Классика мирового кино.'},
-    {'id': 2, 'title': 'Список Шиндлера', 'year': 1993, 'description': 'История Оскара Шиндлера.'},
-    {'id': 3, 'title': 'Побег из Шоушенка', 'year': 1994, 'description': 'История о надежде и свободе.'},
-]
+from films.models import Film
 
 
 def index(request):
@@ -18,26 +13,16 @@ def index(request):
     return render(request, 'films/index.html', context)
 
 
-def about(request):
-    context = {
-        'title': 'О нашем сайте',
-        'film_count': len(FILMS),
-    }
-    return render(request, 'films/about.html', context)
-
-
 def film_list(request):
+    films = Film.objects.all()
     context = {
-        'films': FILMS,
-        'total': len(FILMS),
+        'films': films,
     }
     return render(request, 'films/film_list.html', context)
 
 
 def film_detail(request, film_id):
-    film = next((f for f in FILMS if f['id'] == film_id), None)
-    if film is None:
-        raise Http404('Фильм не найден')
+    film = get_object_or_404(Film, id=film_id)
     return render(request, 'films/film_detail.html', {'film': film})
 
 
@@ -52,15 +37,28 @@ def add_film(request):
 
 def search_film(request):
     query = request.GET.get('q', '').strip()
-    
+
     if not query:
         return HttpResponse('Введите название фильма для поиска.', status=400)
-    
-    return HttpResponse(f'Результаты поиска по запросу: {query}')
+
+    films = Film.objects.search(query)
+    context = {
+        'films': films,
+        'query': query,
+    }
+    return render(request, 'films/search_results.html', context)
 
 
 def director_detail(request, director_id):
     return HttpResponse(f'Страница режиссёра с id={director_id}')
+
+
+def about(request):
+    context = {
+        'title': 'О нашем сайте',
+        'film_count': Film.objects.count(),
+    }
+    return render(request, 'films/about.html', context)
 
 
 def page_not_found(request, exception):

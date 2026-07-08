@@ -1,0 +1,15 @@
+{% extends 'base.html' %}
+
+{% block title %}Поиск: {{ query }}{% endblock %}
+
+{% block content %}
+    <h1>Результаты поиска: «{{ query }}»</h1>
+
+    {% for film in films %}
+        {% include 'films/includes/film_card.html' %}
+    {% empty %}
+        <p>По запросу «{{ query }}» ничего не найдено.</p>
+    {% endfor %}
+
+    <a href="{% url 'films:film_list' %}">← К каталогу</a>
+{% endblock %}
