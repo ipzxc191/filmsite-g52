@@ -1,0 +1,21 @@
+{% extends 'base.html' %}
+
+{% block title %}{{ director.name }} — Сайт фильмов{% endblock %}
+
+{% block content %}
+    <h1>{{ director.name }}</h1>
+
+    {% if director.bio %}
+        <p>{{ director.bio }}</p>
+    {% endif %}
+
+    <h2>Фильмы режиссёра</h2>
+
+    {% for film in films %}
+        {% include 'films/includes/film_card.html' %}
+    {% empty %}
+        <p>Фильмов этого режиссёра пока нет в каталоге.</p>
+    {% endfor %}
+
+    <a href="{% url 'films:film_list' %}">← К каталогу</a>
+{% endblock %}

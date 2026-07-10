@@ -5,6 +5,32 @@
 {% block content %}
     <h1>{{ film.title }}</h1>
     <p>Год выпуска: {{ film.year }}</p>
+
+    {% if film.director %}
+        <p>Режиссёр: {{ film.director.name }}</p>
+    {% endif %}
+
+    {% if film.genres.all %}
+        <p>Жанры:
+            {% for genre in film.genres.all %}
+                {{ genre.name }}{% if not forloop.last %}, {% endif %}
+            {% endfor %}
+        </p>
+    {% endif %}
+
+    {% if film.actors.all %}
+        <p>Актёры:
+            {% for actor in film.actors.all %}
+                {{ actor.name }}{% if not forloop.last %}, {% endif %}
+            {% endfor %}
+        </p>
+    {% endif %}
+
     <p>{{ film.description|default:"Описание отсутствует." }}</p>
+
+    {% if film.stats %}
+        <p>Просмотров: {{ film.stats.views_count }}</p>
+    {% endif %}
+
     <a href="{% url 'films:film_list' %}">← Назад к каталогу</a>
 {% endblock %}

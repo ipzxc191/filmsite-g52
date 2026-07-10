@@ -3,7 +3,7 @@ from django.http import HttpResponse, Http404
 from django.shortcuts import get_object_or_404, redirect, render
 from django.urls import reverse
 
-from films.models import Film
+from films.models import Director, Film
 
 
 def index(request):
@@ -22,7 +22,10 @@ def film_list(request):
 
 
 def film_detail(request, film_id):
-    film = get_object_or_404(Film, id=film_id)
+    film = get_object_or_404(
+        Film.objects.select_related('director').prefetch_related('genres', 'actors'),
+        id=film_id
+    )
     return render(request, 'films/film_detail.html', {'film': film})
 
 
@@ -50,7 +53,13 @@ def search_film(request):
 
 
 def director_detail(request, director_id):
-    return HttpResponse(f'Страница режиссёра с id={director_id}')
+    director = get_object_or_404(Director, id=director_id)
+    films = director.films.select_related('director').prefetch_related('genres')
+    context = {
+        'director': director,
+        'films': films,
+    }
+    return render(request, 'films/director_detail.html', context)
 
 
 def about(request):
