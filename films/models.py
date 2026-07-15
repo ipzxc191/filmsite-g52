@@ -63,7 +63,8 @@ class FilmManager(models.Manager):
     def search(self, query):
         return self.filter(
             models.Q(title__icontains=query) |
-            models.Q(description__icontains=query)
+            models.Q(description__icontains=query) |
+            models.Q(director__name__icontains=query)
         )
 
 

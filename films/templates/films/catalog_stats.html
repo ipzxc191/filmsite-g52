@@ -1,0 +1,26 @@
+{% extends 'base.html' %}
+
+{% block title %}Статистика каталога{% endblock %}
+
+{% block content %}
+    <h1>Статистика каталога</h1>
+
+    <h2>Общая информация</h2>
+    <p>Всего фильмов: {{ overall_stats.total }}</p>
+    <p>Средний рейтинг: {{ overall_stats.avg_rating|floatformat:1 }}</p>
+    <p>Максимальный рейтинг: {{ overall_stats.max_rating }}</p>
+
+    <h2>Самые продуктивные режиссёры</h2>
+    <ul>
+        {% for director in top_directors %}
+            <li>{{ director.name }} — {{ director.film_count }} фильмов</li>
+        {% endfor %}
+    </ul>
+
+    <h2>Фильмы по годам</h2>
+    <ul>
+        {% for item in films_by_year %}
+            <li>{{ item.year }}: {{ item.count }} фильмов</li>
+        {% endfor %}
+    </ul>
+{% endblock %}

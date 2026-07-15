@@ -2,8 +2,9 @@
 from django.http import HttpResponse, Http404
 from django.shortcuts import get_object_or_404, redirect, render
 from django.urls import reverse
+from django.db.models import F, Avg, Count, Max, Min
 
-from films.models import Director, Film
+from films.models import Director, Film, FilmStats
 
 
 def index(request):
@@ -26,6 +27,8 @@ def film_detail(request, film_id):
         Film.objects.select_related('director').prefetch_related('genres', 'actors'),
         id=film_id
     )
+    
+    FilmStats.objects.filter(film=film).update(views_count=F('views_count') + 1)
     return render(request, 'films/film_detail.html', {'film': film})
 
 
@@ -60,6 +63,44 @@ def director_detail(request, director_id):
         'films': films,
     }
     return render(request, 'films/director_detail.html', context)
+
+
+def top_directors(request):
+    directors = Director.objects.annotate(
+        avg_rating=Avg('films__rating'),
+        film_count=Count('films', distinct=True)
+    ).filter(
+        film_count__gte=2
+    ).order_by(
+        '-avg_rating'
+    )[:5]
+
+    context = {'directors': directors}
+    return render(request, 'films/top_directors.html', context)
+
+
+def catalog_stats(request):
+    overall_stats = Film.objects.aggregate(
+        total=Count('id'),
+        avg_rating=Avg('rating'),
+        max_rating=Max('rating'),
+        min_rating=Min('rating'),
+    )
+
+    top_directors = Director.objects.annotate(
+        film_count=Count('films')
+    ).filter(film_count__gt=0).order_by('-film_count')[:5]
+
+    films_by_year = Film.objects.values('year').annotate(
+        count=Count('id')
+    ).order_by('-year')
+
+    context = {
+        'overall_stats': overall_stats,
+        'top_directors': top_directors,
+        'films_by_year': films_by_year,
+    }
+    return render(request, 'films/catalog_stats.html', context)
 
 
 def about(request):

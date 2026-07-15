@@ -1,0 +1,12 @@
+{% extends 'base.html' %}
+
+{% block title %}Самые продуктивные режиссёры{% endblock %}
+
+{% block content %}
+    <h1>Самые продуктивные режиссёры</h1>
+    <ul>
+        {% for director in top_directors %}
+            <li>{{ director.name }} — {{ director.film_count }} фильмов со средним рейтингом {{ director.avg_rating }}</li>
+        {% endfor %}
+    </ul>
+{% endblock %}
