@@ -1,7 +1,5 @@
 <div class="film-card">
-    <h3>
-        <a href="{% url 'films:film_detail' film_id=film.id %}">{{ film.title }}</a>
-    </h3>
+    <h3><a href="{{ film.get_absolute_url }}">{{ film.title }}</a></h3>
     <p>Год: {{ film.year }}</p>
     <p>{{ film.description|default:"Нет описания"|truncatechars:80 }}</p>
 </div>

@@ -1,5 +1,8 @@
 # films/models.py
 from django.db import models
+from django.db.models import Q
+from django.urls import reverse
+from slugify import slugify
 
 
 class Director(models.Model):
@@ -62,50 +65,26 @@ class FilmManager(models.Manager):
 
     def search(self, query):
         return self.filter(
-            models.Q(title__icontains=query) |
-            models.Q(description__icontains=query) |
-            models.Q(director__name__icontains=query)
-        )
+            Q(title__icontains=query) |
+            Q(description__icontains=query) |
+            Q(director__name__icontains=query)
+        ).distinct()
 
 
 class Film(models.Model):
     title = models.CharField(max_length=200, verbose_name='Название')
     year = models.PositiveIntegerField(verbose_name='Год выпуска')
     description = models.TextField(blank=True, verbose_name='Описание')
-    rating = models.DecimalField(
-        max_digits=3,
-        decimal_places=1,
-        default=0.0,
-        verbose_name='Рейтинг'
-    )
+    rating = models.DecimalField(max_digits=3, decimal_places=1, default=0.0, verbose_name='Рейтинг')
     slug = models.SlugField(max_length=200, unique=True, blank=True)
     created_at = models.DateTimeField(auto_now_add=True, verbose_name='Дата добавления')
 
-    # Many-to-One: у фильма один режиссёр
     director = models.ForeignKey(
-        Director,
-        on_delete=models.SET_NULL,
-        null=True,
-        blank=True,
-        related_name='films',
-        verbose_name='Режиссёр'
+        'Director', on_delete=models.SET_NULL, null=True, blank=True,
+        related_name='films', verbose_name='Режиссёр'
     )
-
-    # Many-to-Many: у фильма много жанров
-    genres = models.ManyToManyField(
-        Genre,
-        blank=True,
-        related_name='films',
-        verbose_name='Жанры'
-    )
-
-    # Many-to-Many: у фильма много актёров
-    actors = models.ManyToManyField(
-        Actor,
-        blank=True,
-        related_name='films',
-        verbose_name='Актёры'
-    )
+    genres = models.ManyToManyField('Genre', blank=True, related_name='films', verbose_name='Жанры')
+    actors = models.ManyToManyField('Actor', blank=True, related_name='films', verbose_name='Актёры')
 
     objects = FilmManager()
 
@@ -116,6 +95,21 @@ class Film(models.Model):
 
     def __str__(self):
         return f'{self.title} ({self.year})'
+
+    def save(self, *args, **kwargs):
+        if not self.slug:
+            base_slug = slugify(self.title)
+            slug = base_slug
+            counter = 1
+            while Film.objects.filter(slug=slug).exclude(pk=self.pk).exists():
+                slug = f'{base_slug}-{counter}'
+                counter += 1
+            self.slug = slug
+        super().save(*args, **kwargs)
+
+    def get_absolute_url(self):
+        return reverse('films:film_detail', kwargs={'slug': self.slug})
+
     
 class FilmStats(models.Model):
     film = models.OneToOneField(

@@ -5,8 +5,8 @@
 {% block content %}
     <h1>Самые продуктивные режиссёры</h1>
     <ul>
-        {% for director in top_directors %}
-            <li>{{ director.name }} — {{ director.film_count }} фильмов со средним рейтингом {{ director.avg_rating }}</li>
+        {% for director in directors %}
+            <li>{{ director.name }} — {{ director.film_count }} фильмов со средним рейтингом {{ director.avg_rating|floatformat:1 }}</li>
         {% endfor %}
     </ul>
 {% endblock %}

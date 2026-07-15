@@ -22,13 +22,14 @@ def film_list(request):
     return render(request, 'films/film_list.html', context)
 
 
-def film_detail(request, film_id):
+def film_detail(request, slug):
     film = get_object_or_404(
         Film.objects.select_related('director').prefetch_related('genres', 'actors'),
-        id=film_id
+        slug=slug
     )
-    
+
     FilmStats.objects.filter(film=film).update(views_count=F('views_count') + 1)
+
     return render(request, 'films/film_detail.html', {'film': film})
 
 

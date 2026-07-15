@@ -4,7 +4,7 @@
     <h3>Последние добавленные</h3>
     <ul>
     {% for film in films %}
-        <li><a href="{% url 'films:film_detail' film_id=film.id %}">{{ film.title }}</a></li>
+        <li><a href="{{ film.get_absolute_url }}">{{ film.title }}</a></li>
     {% empty %}
         <li>Фильмов пока нет.</li>
     {% endfor %}
