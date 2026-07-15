@@ -8,11 +8,8 @@ from slugify import slugify
 class Director(models.Model):
     name = models.CharField(max_length=200, verbose_name='Имя')
     bio = models.TextField(blank=True, verbose_name='Биография')
-    photo = models.ImageField(
-        upload_to='directors/',
-        blank=True,
-        verbose_name='Фото'
-    )
+    photo = models.ImageField(upload_to='directors/', blank=True, verbose_name='Фото')
+    slug = models.SlugField(max_length=200, unique=True, blank=True)
 
     class Meta:
         ordering = ['name']
@@ -21,6 +18,20 @@ class Director(models.Model):
 
     def __str__(self):
         return self.name
+
+    def save(self, *args, **kwargs):
+        if not self.slug:
+            base_slug = slugify(self.name)
+            slug = base_slug
+            counter = 1
+            while Director.objects.filter(slug=slug).exclude(pk=self.pk).exists():
+                slug = f'{base_slug}-{counter}'
+                counter += 1
+            self.slug = slug
+        super().save(*args, **kwargs)
+
+    def get_absolute_url(self):
+        return reverse('films:director_detail', kwargs={'slug': self.slug})
     
 class Actor(models.Model):
     name = models.CharField(max_length=200, verbose_name='Имя')

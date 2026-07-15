@@ -12,5 +12,5 @@ urlpatterns = [
     path('films/add/', views.add_film, name='add_film'),
     path('films/search/', views.search_film, name='search_film'),
     path('directors/top/', views.top_directors, name='top_directors'),
-    path('directors/<int:director_id>/', views.director_detail, name='director_detail'),
+    path('directors/<slug:slug>/', views.director_detail, name='director_detail'),
 ]

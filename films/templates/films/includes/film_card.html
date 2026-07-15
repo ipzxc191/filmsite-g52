@@ -2,4 +2,10 @@
     <h3><a href="{{ film.get_absolute_url }}">{{ film.title }}</a></h3>
     <p>Год: {{ film.year }}</p>
     <p>{{ film.description|default:"Нет описания"|truncatechars:80 }}</p>
+    
+    <p>Режиссёр: 
+        <a href="{{ film.director.get_absolute_url }}">
+        {{ film.director|default:"Нет режиссёра"|truncatechars:20 }}
+        </a>
+    </p>
 </div>

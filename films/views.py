@@ -15,7 +15,7 @@ def index(request):
 
 
 def film_list(request):
-    films = Film.objects.all()
+    films = Film.objects.select_related('director').prefetch_related('genres', 'actors')
     context = {
         'films': films,
     }
@@ -56,13 +56,10 @@ def search_film(request):
     return render(request, 'films/search_results.html', context)
 
 
-def director_detail(request, director_id):
-    director = get_object_or_404(Director, id=director_id)
+def director_detail(request, slug):
+    director = get_object_or_404(Director, slug=slug)
     films = director.films.select_related('director').prefetch_related('genres')
-    context = {
-        'director': director,
-        'films': films,
-    }
+    context = {'director': director, 'films': films}
     return render(request, 'films/director_detail.html', context)
 
 
