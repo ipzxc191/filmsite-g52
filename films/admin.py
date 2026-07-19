@@ -1,6 +1,12 @@
+# films/admin.py
 from django.contrib import admin
 from django.utils.html import format_html
 from .models import Film, Genre, Director, Actor, FilmStats
+
+
+class FilmStatsInline(admin.TabularInline):
+    model = FilmStats
+    extra = 0
 
 
 @admin.register(Film)
@@ -12,6 +18,28 @@ class FilmAdmin(admin.ModelAdmin):
     list_per_page = 20
     empty_value_display = '— не указано —'
     actions = ['reset_rating', 'add_classic_genre']
+
+    prepopulated_fields = {'slug': ('title',)}
+    autocomplete_fields = ('director', 'genres', 'actors')
+    readonly_fields = ('created_at',)
+    inlines = [FilmStatsInline]
+
+    fieldsets = (
+        ('Основная информация', {
+            'fields': ('title', 'slug', 'year', 'description')
+        }),
+        ('Участники', {
+            'fields': ('director', 'genres', 'actors')
+        }),
+        ('Рейтинг', {
+            'fields': ('rating',),
+            'classes': ('collapse',),
+        }),
+        ('Системная информация', {
+            'fields': ('created_at',),
+            'classes': ('collapse',),
+        }),
+    )
 
     @admin.display(description='Рейтинг')
     def rating_badge(self, obj):
@@ -48,33 +76,45 @@ class FilmAdmin(admin.ModelAdmin):
 @admin.register(Genre)
 class GenreAdmin(admin.ModelAdmin):
     list_display = ('name', 'slug')
-    list_editable = ('slug',)
-    list_per_page = 15
-    
-    
+    search_fields = ('name',)
+    prepopulated_fields = {'slug': ('name',)}
+
+
 @admin.register(Director)
 class DirectorAdmin(admin.ModelAdmin):
     list_display = ('name', 'slug', 'film_count')
     search_fields = ('name',)
-    empty_value_display = '— нет данных —'
-    
-    list_per_page = 15
-    
+    prepopulated_fields = {'slug': ('name',)}
+    readonly_fields = ('films_preview',)
     actions = ['clear_bio']
+
+    fieldsets = (
+        ('Основная информация', {
+            'fields': ('name', 'slug')
+        }),
+        ('Дополнительно', {
+            'fields': ('bio', 'photo', 'films_preview'),
+            'classes': ('collapse',),
+        }),
+    )
 
     @admin.display(description='Количество фильмов')
     def film_count(self, obj):
         return obj.films.count()
+
+    @admin.display(description='Фильмы режиссёра')
+    def films_preview(self, obj):
+        return ', '.join(film.title for film in obj.films.all()) or 'Фильмов пока нет'
 
     @admin.action(description='Очистить биографию выбранных режиссёров')
     def clear_bio(self, request, queryset):
         updated_count = queryset.update(bio='')
         self.message_user(request, f'Биография очищена у {updated_count} режиссёров.')
 
-
 @admin.register(Actor)
 class ActorAdmin(admin.ModelAdmin):
     list_display = ('name',)
+    search_fields = ('name',)
 
 
 @admin.register(FilmStats)
