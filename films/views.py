@@ -5,6 +5,7 @@ from django.urls import reverse
 from django.db.models import F, Avg, Count, Max, Min
 
 from films.models import Director, Film, FilmStats
+from .forms import ReviewSearchForm, ReviewForm, FilmForm
 
 
 def index(request):
@@ -35,11 +36,15 @@ def film_detail(request, slug):
 
 def add_film(request):
     if request.method == 'POST':
-        title = request.POST.get('title', '').strip()
-        if not title:
-            return HttpResponse('Название фильма не может быть пустым.', status=400)
-        return redirect(reverse('film_list'))
-    return HttpResponse('Здесь будет форма добавления фильма.')
+        form = FilmForm(request.POST)
+        if form.is_valid():
+            film = form.save()
+            FilmStats.objects.get_or_create(film=film)
+            return redirect(film.get_absolute_url())
+    else:
+        form = FilmForm()
+
+    return render(request, 'films/add_film.html', {'form': form})
 
 
 def search_film(request):
@@ -99,6 +104,27 @@ def catalog_stats(request):
         'films_by_year': films_by_year,
     }
     return render(request, 'films/catalog_stats.html', context)
+
+
+def review_search(request):
+    form = ReviewSearchForm()
+    return render(request, 'films/review_search.html', {'form': form})
+
+
+def add_review(request, slug):
+    film = get_object_or_404(Film, slug=slug)
+
+    if request.method == 'POST':
+        form = ReviewForm(request.POST)
+        if form.is_valid():
+            review = form.save(commit=False)
+            review.film = film
+            review.save()
+            return redirect(film.get_absolute_url())
+    else:
+        form = ReviewForm()
+
+    return render(request, 'films/add_review.html', {'form': form, 'film': film})
 
 
 def about(request):

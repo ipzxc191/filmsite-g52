@@ -1,0 +1,15 @@
+{% extends 'base.html' %}
+
+{% block title %}Рецензия на {{ film.title }}{% endblock %}
+
+{% block content %}
+    <h1>Оставить рецензию на «{{ film.title }}»</h1>
+
+    <form method="POST">
+        {% csrf_token %}
+        {{ form.as_p }}
+        <button type="submit">Опубликовать</button>
+    </form>
+
+    <a href="{{ film.get_absolute_url }}">← Назад к фильму</a>
+{% endblock %}

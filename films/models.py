@@ -138,3 +138,21 @@ class FilmStats(models.Model):
 
     def __str__(self):
         return f'Статистика: {self.film.title}'
+    
+    
+class Review(models.Model):
+    film = models.ForeignKey(
+        Film, on_delete=models.CASCADE, related_name='reviews', verbose_name='Фильм'
+    )
+    author_name = models.CharField(max_length=100, verbose_name='Имя автора')
+    text = models.TextField(verbose_name='Текст рецензии')
+    rating = models.PositiveSmallIntegerField(verbose_name='Оценка')
+    created_at = models.DateTimeField(auto_now_add=True)
+
+    class Meta:
+        ordering = ['-created_at']
+        verbose_name = 'Рецензия'
+        verbose_name_plural = 'Рецензии'
+
+    def __str__(self):
+        return f'Рецензия на «{self.film.title}» от {self.author_name}'
