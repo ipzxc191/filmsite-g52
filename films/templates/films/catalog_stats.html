@@ -8,7 +8,7 @@
     <h2>Общая информация</h2>
     <p>Всего фильмов: {{ overall_stats.total }}</p>
     <p>Средний рейтинг: {{ overall_stats.avg_rating|floatformat:1 }}</p>
-    <p>Максимальный рейтинг: {{ overall_stats.max_rating }}</p>
+    <p>Максимальный рейтинг: {{ overall_stats.max_rating|floatformat:1 }}</p>
 
     <h2>Самые продуктивные режиссёры</h2>
     <ul>

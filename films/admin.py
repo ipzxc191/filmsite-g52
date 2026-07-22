@@ -11,7 +11,7 @@ class FilmStatsInline(admin.TabularInline):
 
 @admin.register(Film)
 class FilmAdmin(admin.ModelAdmin):
-    list_display = ('title', 'year', 'rating_badge', 'director', 'genre_list')
+    list_display = ('poster_thumbnail', 'title', 'year', 'rating_badge', 'director', 'genre_list')
     list_display_links = ('title',)
     search_fields = ('title', 'description', 'director__name')
     list_filter = ('year', 'genres')
@@ -57,6 +57,16 @@ class FilmAdmin(admin.ModelAdmin):
     @admin.display(description='Жанры')
     def genre_list(self, obj):
         return ', '.join(genre.name for genre in obj.genres.all())
+    
+    @admin.display(description='Постер')
+    def poster_thumbnail(self, obj):
+        if obj.poster:
+            return format_html(
+                '<img src="{}" width="50" height="70" '
+                'style="object-fit: cover; border-radius: 4px;" />',
+                obj.poster.url
+            )
+        return '—'
 
     @admin.action(description='Сбросить рейтинг выбранных фильмов')
     def reset_rating(self, request, queryset):

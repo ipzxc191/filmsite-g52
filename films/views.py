@@ -153,3 +153,64 @@ def page_not_found(request, exception):
 
 def server_error(request):
     return HttpResponse('Произошла ошибка сервера.', status=500)
+
+# CBV
+
+from django.views.generic import View, TemplateView
+from django.shortcuts import render, redirect
+from django.http import HttpResponse
+from .forms import FilmForm
+from .models import Film
+
+
+class IndexView(TemplateView):
+    template_name = 'films/index.html'
+
+    def get_context_data(self, **kwargs):
+        context = super().get_context_data(**kwargs)
+        context['title'] = 'Лучшие фильмы всех времён'
+        return context
+
+
+class AboutView(TemplateView):
+    template_name = 'films/about.html'
+
+    def get_context_data(self, **kwargs):
+        context = super().get_context_data(**kwargs)
+        context['title'] = 'О нашем сайте'
+        context['film_count'] = Film.objects.count()
+        return context
+
+
+class AddFilmView(View):
+    def get(self, request):
+        form = FilmForm()
+        return render(request, 'films/add_film.html', {'form': form})
+
+    def post(self, request):
+        form = FilmForm(request.POST, request.FILES)
+        if form.is_valid():
+            film = form.save()
+            return redirect(film.get_absolute_url())
+        return render(request, 'films/add_film.html', {'form': form})
+    
+class CatalogStatsView(TemplateView):
+    template_name = 'films/catalog_stats.html'
+
+    def get_context_data(self, **kwargs):
+        context = super().get_context_data(**kwargs)
+
+        context['overall_stats'] = Film.objects.aggregate(
+            total=Count('id'),
+            avg_rating=Avg('rating'),
+            max_rating=Max('rating'),
+            min_rating=Min('rating'),
+        )
+        context['top_directors'] = Director.objects.annotate(
+            film_count=Count('films')
+        ).filter(film_count__gt=0).order_by('-film_count')[:5]
+        context['films_by_year'] = Film.objects.values('year').annotate(
+            count=Count('id')
+        ).order_by('-year')
+
+        return context
