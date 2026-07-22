@@ -2,7 +2,12 @@
 from django.db import models
 from django.db.models import Q
 from django.urls import reverse
+from django.core.validators import MinValueValidator, MaxValueValidator
+
 from slugify import slugify
+
+from films.validators import validate_film_year
+
 
 
 class Director(models.Model):
@@ -84,7 +89,7 @@ class FilmManager(models.Manager):
 
 class Film(models.Model):
     title = models.CharField(max_length=200, verbose_name='Название')
-    year = models.PositiveIntegerField(verbose_name='Год выпуска')
+    year = models.PositiveIntegerField(validators=[validate_film_year], verbose_name='Год выпуска')
     description = models.TextField(blank=True, verbose_name='Описание')
     rating = models.DecimalField(max_digits=3, decimal_places=1, default=0.0, verbose_name='Рейтинг')
     slug = models.SlugField(max_length=200, unique=True, blank=True)
@@ -146,7 +151,10 @@ class Review(models.Model):
     )
     author_name = models.CharField(max_length=100, verbose_name='Имя автора')
     text = models.TextField(verbose_name='Текст рецензии')
-    rating = models.PositiveSmallIntegerField(verbose_name='Оценка')
+    rating = models.PositiveSmallIntegerField(
+        validators=[MinValueValidator(1), MaxValueValidator(10)],
+        help_text='Оценка от 1 до 10'
+    )
     created_at = models.DateTimeField(auto_now_add=True)
 
     class Meta:
