@@ -4,6 +4,13 @@
 
 {% block content %}
     <h1>{{ film.title }}</h1>
+
+    {% if film.poster %}
+        <img src="{{ film.poster.url }}" alt="Постер фильма «{{ film.title }}»" width="300">
+    {% else %}
+        <p>Постер пока не загружен.</p>
+    {% endif %}
+
     <p>Год выпуска: {{ film.year }}</p>
 
     {% if film.director %}
@@ -19,11 +26,17 @@
     {% endif %}
 
     {% if film.actors.all %}
-        <p>Актёры:
+        <h3>Актёры</h3>
+        <div class="actors-list">
             {% for actor in film.actors.all %}
-                {{ actor.name }}{% if not forloop.last %}, {% endif %}
+                <div class="actor-item">
+                    {% if actor.photo %}
+                        <img src="{{ actor.photo.url }}" alt="{{ actor.name }}" width="80">
+                    {% endif %}
+                    <p>{{ actor.name }}</p>
+                </div>
             {% endfor %}
-        </p>
+        </div>
     {% endif %}
 
     <p>{{ film.description|default:"Описание отсутствует." }}</p>

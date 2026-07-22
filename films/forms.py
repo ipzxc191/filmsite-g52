@@ -1,10 +1,10 @@
 from django import forms
-from .models import Film, Review
+from .models import Actor, Film, Review
 
 class FilmForm(forms.ModelForm):
     class Meta:
         model = Film
-        fields = ['title', 'year', 'description', 'director', 'genres']
+        fields = ['title', 'year', 'description', 'director', 'genres', 'poster']
         widgets = {
             'description': forms.Textarea(attrs={'rows': 5}),
         }
@@ -81,3 +81,8 @@ class ReviewSearchForm(forms.Form):
         max_value=10,
         label='Минимальный рейтинг'
     )
+    
+class ActorForm(forms.ModelForm):
+    class Meta:
+        model = Actor
+        fields = ['name', 'photo']

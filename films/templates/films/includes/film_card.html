@@ -1,4 +1,8 @@
 <div class="film-card">
+    {% if film.poster %}
+        <img src="{{ film.poster.url }}" alt="{{ film.title }}" width="150">
+    {% endif %}
+    
     <h3><a href="{{ film.get_absolute_url }}">{{ film.title }}</a></h3>
     <p>Год: {{ film.year }}</p>
     <p>{{ film.description|default:"Нет описания"|truncatechars:80 }}</p>

@@ -14,4 +14,5 @@ urlpatterns = [
     path('films/<slug:slug>/review/', views.add_review, name='add_review'),
     path('directors/top/', views.top_directors, name='top_directors'),
     path('directors/<slug:slug>/', views.director_detail, name='director_detail'),
+    path('actors/add/', views.add_actor, name='add_actor'),
 ]

@@ -1,10 +1,9 @@
 {% extends 'base.html' %}
 
-{% block title %}Добавить фильм{% endblock %}
+{% block title %}Добавить актёра{% endblock %}
 
 {% block content %}
-    <h1>Добавить новый фильм</h1>
-
+    <h1>Добавить актёра</h1>
     <form method="POST" enctype="multipart/form-data">
         {% csrf_token %}
         {{ form.as_p }}

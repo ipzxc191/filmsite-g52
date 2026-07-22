@@ -2,11 +2,11 @@
 from django.db import models
 from django.db.models import Q
 from django.urls import reverse
-from django.core.validators import MinValueValidator, MaxValueValidator
+from django.core.validators import MinValueValidator, MaxValueValidator, FileExtensionValidator
 
 from slugify import slugify
 
-from films.validators import validate_film_year
+from films.validators import validate_file_size, validate_film_year
 
 
 
@@ -93,6 +93,15 @@ class Film(models.Model):
     description = models.TextField(blank=True, verbose_name='Описание')
     rating = models.DecimalField(max_digits=3, decimal_places=1, default=0.0, verbose_name='Рейтинг')
     slug = models.SlugField(max_length=200, unique=True, blank=True)
+    poster = models.ImageField(
+        upload_to='posters/', 
+        blank=True, 
+        validators=[
+                validate_file_size,
+                FileExtensionValidator(allowed_extensions=['jpg', 'jpeg', 'png', 'webp'])
+            ], 
+        verbose_name='Постер'
+    )
     created_at = models.DateTimeField(auto_now_add=True, verbose_name='Дата добавления')
 
     director = models.ForeignKey(

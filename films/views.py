@@ -5,7 +5,7 @@ from django.urls import reverse
 from django.db.models import F, Avg, Count, Max, Min
 
 from films.models import Director, Film, FilmStats
-from .forms import ReviewSearchForm, ReviewForm, FilmForm
+from .forms import ReviewSearchForm, ReviewForm, FilmForm, ActorForm
 
 
 def index(request):
@@ -36,7 +36,7 @@ def film_detail(request, slug):
 
 def add_film(request):
     if request.method == 'POST':
-        form = FilmForm(request.POST)
+        form = FilmForm(request.POST, request.FILES)
         if form.is_valid():
             film = form.save()
             FilmStats.objects.get_or_create(film=film)
@@ -45,6 +45,18 @@ def add_film(request):
         form = FilmForm()
 
     return render(request, 'films/add_film.html', {'form': form})
+
+
+def add_actor(request):
+    if request.method == 'POST':
+        form = ActorForm(request.POST, request.FILES)
+        if form.is_valid():
+            actor = form.save()
+            return redirect('films:film_list')  # либо своя страница актёра, если будет в будущем
+    else:
+        form = ActorForm()
+
+    return render(request, 'films/add_actor.html', {'form': form})
 
 
 def search_film(request):

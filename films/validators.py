@@ -12,3 +12,8 @@ def validate_film_year(value):
         raise ValidationError(
             'Год выпуска не может быть раньше 1888 года — до этого кинематографа не существовало.'
         )
+        
+def validate_file_size(value):
+    max_size_mb = 5
+    if value.size > max_size_mb * 1024 * 1024:
+        raise ValidationError(f'Размер файла не должен превышать {max_size_mb} МБ.')

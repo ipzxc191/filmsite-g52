@@ -26,7 +26,7 @@ class FilmAdmin(admin.ModelAdmin):
 
     fieldsets = (
         ('Основная информация', {
-            'fields': ('title', 'slug', 'year', 'description')
+            'fields': ('title', 'slug', 'year', 'description', 'poster')
         }),
         ('Участники', {
             'fields': ('director', 'genres', 'actors')
@@ -113,7 +113,7 @@ class DirectorAdmin(admin.ModelAdmin):
 
 @admin.register(Actor)
 class ActorAdmin(admin.ModelAdmin):
-    list_display = ('name',)
+    list_display = ('name', 'photo')
     search_fields = ('name',)
 
 
