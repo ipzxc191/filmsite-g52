@@ -1,0 +1,14 @@
+{% extends 'base.html' %}
+
+{% block title %}
+    {% if object %}Редактировать режиссёра{% else %}Добавить режиссёра{% endif %}
+{% endblock %}
+
+{% block content %}
+    <h1>{% if object %}Редактировать: {{ object.name }}{% else %}Добавить режиссёра{% endif %}</h1>
+    <form method="POST" enctype="multipart/form-data">
+        {% csrf_token %}
+        {{ form.as_p }}
+        <button type="submit">Сохранить</button>
+    </form>
+{% endblock %}

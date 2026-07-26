@@ -45,5 +45,10 @@
         <p>Просмотров: {{ film.stats.views_count }}</p>
     {% endif %}
 
+    <div class="film-actions">
+        <a href="{% url 'films:film_edit' slug=film.slug %}">Редактировать</a>
+        <a href="{% url 'films:film_delete' slug=film.slug %}">Удалить</a>
+    </div>
+
     <a href="{% url 'films:film_list' %}">← Назад к каталогу</a>
 {% endblock %}

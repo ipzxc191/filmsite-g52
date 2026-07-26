@@ -1,5 +1,6 @@
 from django import forms
-from .models import Actor, Film, Review
+from .models import Actor, Film, Review, Director
+
 
 class FilmForm(forms.ModelForm):
     class Meta:
@@ -25,6 +26,15 @@ class FilmForm(forms.ModelForm):
                 self.add_error('genres', 'Жанры «Комедия» и «Трагедия» не могут быть выбраны одновременно.')
 
         return cleaned_data
+    
+
+class DirectorForm(forms.ModelForm):
+    class Meta:
+        model = Director
+        fields = ['name', 'bio', 'photo']
+        widgets = {
+            'bio': forms.Textarea(attrs={'rows': 4}),
+        }
 
 
 class ReviewForm(forms.ModelForm):

@@ -157,11 +157,13 @@ def server_error(request):
 # CBV
 
 from django.views.generic import View, TemplateView, ListView, DetailView
+from django.views.generic.edit import FormView, CreateView, UpdateView, DeleteView
+from django.urls import reverse_lazy
 from django.shortcuts import render, redirect
 from django.http import HttpResponse
 from django.db.models import F
 
-from .forms import FilmForm
+from .forms import FilmForm, DirectorForm
 from .models import Film, FilmStats, Director
 
 
@@ -242,6 +244,29 @@ class FilmDetailView(DetailView):
         return response
 
 
+class FilmCreateView(CreateView):
+    model = Film
+    form_class = FilmForm
+    template_name = 'films/add_film.html'
+    
+    
+class FilmUpdateView(UpdateView):
+    model = Film
+    form_class = FilmForm
+    template_name = 'films/film_edit.html'
+    context_object_name = 'film'
+
+    def get_success_url(self):
+        return self.object.get_absolute_url()
+    
+
+class FilmDeleteView(DeleteView):
+    model = Film
+    template_name = 'films/film_confirm_delete.html'
+    context_object_name = 'film'
+    success_url = reverse_lazy('films:film_list')
+
+
 class DirectorDetailView(DetailView):
     model = Director
     template_name = 'films/director_detail.html'
@@ -251,3 +276,46 @@ class DirectorDetailView(DetailView):
         context = super().get_context_data(**kwargs)
         context['films'] = self.object.films.select_related('director').prefetch_related('genres')
         return context
+
+
+class DirectorCreateView(CreateView):
+    model = Director
+    form_class = DirectorForm
+    template_name = 'films/director_form.html'
+
+
+class DirectorUpdateView(UpdateView):
+    model = Director
+    form_class = DirectorForm
+    template_name = 'films/director_form.html'
+    context_object_name = 'director'
+
+    def get_success_url(self):
+        return self.object.get_absolute_url()
+
+
+class DirectorDeleteView(DeleteView):
+    model = Director
+    template_name = 'films/director_confirm_delete.html'
+    context_object_name = 'director'
+    success_url = reverse_lazy('films:film_list')
+    
+class AddReviewView(FormView):
+    form_class = ReviewForm
+    template_name = 'films/add_review.html'
+    # success_url = reverse_lazy('films:film_list')  # всегда на список фильмов
+
+    def get_film(self):
+        return get_object_or_404(Film, slug=self.kwargs['slug'])
+
+    def get_context_data(self, **kwargs):
+        context = super().get_context_data(**kwargs)
+        context['film'] = self.get_film()
+        return context
+
+    def form_valid(self, form):
+        film = self.get_film()
+        review = form.save(commit=False)
+        review.film = film
+        review.save()
+        return redirect(film.get_absolute_url())

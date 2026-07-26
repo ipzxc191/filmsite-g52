@@ -9,6 +9,11 @@
         <p>{{ director.bio }}</p>
     {% endif %}
 
+    <div class="director-actions">
+        <a href="{% url 'films:director_edit' slug=director.slug %}">Редактировать</a>
+        <a href="{% url 'films:director_delete' slug=director.slug %}">Удалить</a>
+    </div>
+
     <h2>Фильмы режиссёра</h2>
 
     {% for film in films %}

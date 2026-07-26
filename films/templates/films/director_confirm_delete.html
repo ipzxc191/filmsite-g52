@@ -1,0 +1,13 @@
+{% extends 'base.html' %}
+
+{% block title %}Удалить режиссёра{% endblock %}
+
+{% block content %}
+    <h1>Удалить режиссёра «{{ director.name }}»?</h1>
+    <p>Фильмы режиссёра останутся в каталоге, но поле «Режиссёр» будет сброшено.</p>
+    <form method="POST">
+        {% csrf_token %}
+        <button type="submit">Да, удалить</button>
+        <a href="{{ director.get_absolute_url }}">Отменить</a>
+    </form>
+{% endblock %}
