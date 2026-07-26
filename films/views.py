@@ -1,4 +1,4 @@
-# films/views.py
+# FBV
 from django.http import HttpResponse, Http404
 from django.shortcuts import get_object_or_404, redirect, render
 from django.urls import reverse
@@ -156,11 +156,13 @@ def server_error(request):
 
 # CBV
 
-from django.views.generic import View, TemplateView
+from django.views.generic import View, TemplateView, ListView, DetailView
 from django.shortcuts import render, redirect
 from django.http import HttpResponse
+from django.db.models import F
+
 from .forms import FilmForm
-from .models import Film
+from .models import Film, FilmStats, Director
 
 
 class IndexView(TemplateView):
@@ -213,4 +215,39 @@ class CatalogStatsView(TemplateView):
             count=Count('id')
         ).order_by('-year')
 
+        return context
+
+
+class FilmListView(ListView):
+    model = Film
+    template_name = 'films/film_list.html'
+    context_object_name = 'films'
+    paginate_by = 10
+
+    def get_queryset(self):
+        return Film.objects.select_related('director').prefetch_related('genres', 'actors')
+
+
+class FilmDetailView(DetailView):
+    model = Film
+    template_name = 'films/film_detail.html'
+    context_object_name = 'film'
+
+    def get_queryset(self):
+        return Film.objects.select_related('director').prefetch_related('genres', 'actors')
+
+    def get(self, request, *args, **kwargs):
+        response = super().get(request, *args, **kwargs)
+        FilmStats.objects.filter(film=self.object).update(views_count=F('views_count') + 1)
+        return response
+
+
+class DirectorDetailView(DetailView):
+    model = Director
+    template_name = 'films/director_detail.html'
+    context_object_name = 'director'
+
+    def get_context_data(self, **kwargs):
+        context = super().get_context_data(**kwargs)
+        context['films'] = self.object.films.select_related('director').prefetch_related('genres')
         return context

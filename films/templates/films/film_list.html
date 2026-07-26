@@ -1,6 +1,5 @@
+<!-- films/templates/films/film_list.html -->
 {% extends 'base.html' %}
-
-{% block title %}Каталог фильмов{% endblock %}
 
 {% block content %}
     <h1>Каталог фильмов</h1>
@@ -10,4 +9,18 @@
     {% empty %}
         <p>В каталоге пока нет фильмов.</p>
     {% endfor %}
+
+    {% if page_obj.has_other_pages %}
+        <div class="pagination">
+            {% if page_obj.has_previous %}
+                <a href="?page={{ page_obj.previous_page_number }}">← Назад</a>
+            {% endif %}
+
+            <span>Страница {{ page_obj.number }} из {{ page_obj.paginator.num_pages }}</span>
+
+            {% if page_obj.has_next %}
+                <a href="?page={{ page_obj.next_page_number }}">Вперёд →</a>
+            {% endif %}
+        </div>
+    {% endif %}
 {% endblock %}
