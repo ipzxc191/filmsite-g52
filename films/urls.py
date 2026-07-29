@@ -4,6 +4,11 @@ from . import views
 app_name = 'films'
 
 urlpatterns = [
+    # fbv
+    path('films/search/', views.search_film, name='search_film'),
+    path('directors/top/', views.top_directors, name='top_directors'),
+    path('actors/add/', views.add_actor, name='add_actor'),
+    
     # cbv
     path('', views.IndexView.as_view(), name='index'),
     path('about/', views.AboutView.as_view(), name='about'),
@@ -19,8 +24,4 @@ urlpatterns = [
     path('directors/<slug:slug>/edit/', views.DirectorUpdateView.as_view(), name='director_edit'),
     path('directors/<slug:slug>/delete/', views.DirectorDeleteView.as_view(), name='director_delete'),
     
-    # fbv
-    path('films/search/', views.search_film, name='search_film'),
-    path('directors/top/', views.top_directors, name='top_directors'),
-    path('actors/add/', views.add_actor, name='add_actor'),
 ]

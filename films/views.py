@@ -3,7 +3,10 @@ from django.http import HttpResponse, Http404
 from django.shortcuts import get_object_or_404, redirect, render
 from django.urls import reverse
 from django.db.models import F, Avg, Count, Max, Min
+from django.core.paginator import Paginator, InvalidPage
+from django.http import Http404
 
+from films.mixins import FilmEditMixin, FilmQuerySetMixin, GenreListMixin, RecentFilmsMixin
 from films.models import Director, Film, FilmStats
 from .forms import ReviewSearchForm, ReviewForm, FilmForm, ActorForm
 
@@ -61,13 +64,24 @@ def add_actor(request):
 
 def search_film(request):
     query = request.GET.get('q', '').strip()
+    films = Film.objects.none()
 
-    if not query:
-        return HttpResponse('Введите название фильма для поиска.', status=400)
+    if query:
+        films = Film.objects.search(query)
 
-    films = Film.objects.search(query)
+    paginator = Paginator(films, 10)          # по 10 фильмов на странице
+    page_number = request.GET.get('page', 1)  # номер страницы из GET-параметра
+
+    try:
+        page_obj = paginator.page(page_number)
+    except InvalidPage:
+        raise Http404('Страница не найдена')
+
     context = {
-        'films': films,
+        'films': page_obj.object_list,   # объекты текущей страницы
+        'page_obj': page_obj,
+        'paginator': paginator,
+        'is_paginated': paginator.num_pages > 1,
         'query': query,
     }
     return render(request, 'films/search_results.html', context)
@@ -156,6 +170,7 @@ def server_error(request):
 
 # CBV
 
+from django.contrib.auth.mixins import LoginRequiredMixin, PermissionRequiredMixin
 from django.views.generic import View, TemplateView, ListView, DetailView
 from django.views.generic.edit import FormView, CreateView, UpdateView, DeleteView
 from django.urls import reverse_lazy
@@ -220,23 +235,17 @@ class CatalogStatsView(TemplateView):
         return context
 
 
-class FilmListView(ListView):
+class FilmListView(FilmQuerySetMixin, GenreListMixin, ListView):
     model = Film
     template_name = 'films/film_list.html'
     context_object_name = 'films'
     paginate_by = 10
+    
 
-    def get_queryset(self):
-        return Film.objects.select_related('director').prefetch_related('genres', 'actors')
-
-
-class FilmDetailView(DetailView):
+class FilmDetailView(FilmQuerySetMixin, RecentFilmsMixin, DetailView):
     model = Film
     template_name = 'films/film_detail.html'
     context_object_name = 'film'
-
-    def get_queryset(self):
-        return Film.objects.select_related('director').prefetch_related('genres', 'actors')
 
     def get(self, request, *args, **kwargs):
         response = super().get(request, *args, **kwargs)
@@ -244,24 +253,20 @@ class FilmDetailView(DetailView):
         return response
 
 
-class FilmCreateView(CreateView):
-    model = Film
-    form_class = FilmForm
-    template_name = 'films/add_film.html'
+class FilmCreateView(LoginRequiredMixin, FilmEditMixin, CreateView):
+    pass
     
     
-class FilmUpdateView(UpdateView):
-    model = Film
-    form_class = FilmForm
-    template_name = 'films/film_edit.html'
+class FilmUpdateView(LoginRequiredMixin, FilmEditMixin, UpdateView):
     context_object_name = 'film'
 
     def get_success_url(self):
         return self.object.get_absolute_url()
     
 
-class FilmDeleteView(DeleteView):
+class FilmDeleteView(LoginRequiredMixin, PermissionRequiredMixin, DeleteView):
     model = Film
+    permission_required = 'films.delete_film'
     template_name = 'films/film_confirm_delete.html'
     context_object_name = 'film'
     success_url = reverse_lazy('films:film_list')
