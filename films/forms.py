@@ -1,4 +1,7 @@
 from django import forms
+from django.contrib.auth.forms import UserCreationForm, AuthenticationForm
+from django.contrib.auth.models import User
+
 from .models import Actor, Film, Review, Director
 
 
@@ -96,3 +99,80 @@ class ActorForm(forms.ModelForm):
     class Meta:
         model = Actor
         fields = ['name', 'photo']
+
+
+class CustomAuthenticationForm(AuthenticationForm):
+    username = forms.CharField(
+        label='Имя пользователя или Email',
+        widget=forms.TextInput(attrs={'autofocus': True}),
+    )
+
+
+class CustomRegistrationForm(UserCreationForm):
+    email = forms.EmailField(
+        required=True,
+        label='Email',
+        help_text='Обязательное поле. Введите действующий адрес.'
+    )
+    first_name = forms.CharField(
+        max_length=150,
+        required=False,
+        label='Имя'
+    )
+    last_name = forms.CharField(
+        max_length=150,
+        required=False,
+        label='Фамилия'
+    )
+
+    class Meta:
+        model = User
+        fields = ('username', 'first_name', 'last_name', 'email', 'password1', 'password2')
+        
+    def __init__(self, *args, **kwargs):
+        super().__init__(*args, **kwargs)
+
+        # Убираем подсказки
+        self.fields['username'].help_text = None
+        self.fields['password1'].help_text = None
+        self.fields['password2'].help_text = None
+
+        # Красивые placeholder'ы
+        self.fields['first_name'].widget.attrs.update({
+            'placeholder': 'Введите Имя'
+        })
+        
+        self.fields['last_name'].widget.attrs.update({
+            'placeholder': 'Введите Фамилию'
+        })
+        
+        self.fields['username'].widget.attrs.update({
+            'placeholder': 'Введите имя пользователя'
+        })
+
+        self.fields['email'].widget.attrs.update({
+            'placeholder': 'Введите email'
+        })
+
+        self.fields['password1'].widget.attrs.update({
+            'placeholder': 'Введите пароль'
+        })
+
+        self.fields['password2'].widget.attrs.update({
+            'placeholder': 'Повторите пароль'
+        })
+        
+    def clean_email(self):
+        email = self.cleaned_data['email']
+        if User.objects.filter(email=email).exists():
+            raise forms.ValidationError('Пользователь с таким email уже зарегистрирован.')
+        return email
+
+    def save(self, commit=True):
+        user = super().save(commit=False)
+        user.email = self.cleaned_data['email']
+        user.first_name = self.cleaned_data['first_name']
+        user.last_name = self.cleaned_data['last_name']
+        if commit:
+            user.save()
+        return user

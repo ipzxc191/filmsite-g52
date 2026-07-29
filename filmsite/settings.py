@@ -129,3 +129,9 @@ LOGIN_REDIRECT_URL = '/'
 LOGOUT_REDIRECT_URL = '/'
 
 LOGIN_URL = '/accounts/login/'
+
+
+AUTHENTICATION_BACKENDS = [
+    'films.backends.EmailAuthBackend',      # сначала пробуем по email
+    'django.contrib.auth.backends.ModelBackend',  # потом по username
+]

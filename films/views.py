@@ -8,7 +8,7 @@ from django.http import Http404
 
 from films.mixins import FilmEditMixin, FilmQuerySetMixin, GenreListMixin, RecentFilmsMixin
 from films.models import Director, Film, FilmStats
-from .forms import ReviewSearchForm, ReviewForm, FilmForm, ActorForm
+from .forms import CustomRegistrationForm, ReviewSearchForm, ReviewForm, FilmForm, ActorForm
 
 
 def index(request):
@@ -177,6 +177,8 @@ from django.urls import reverse_lazy
 from django.shortcuts import render, redirect
 from django.http import HttpResponse
 from django.db.models import F
+from django.contrib.auth.forms import UserCreationForm
+from django.contrib.auth import authenticate, login
 
 from .forms import FilmForm, DirectorForm
 from .models import Film, FilmStats, Director
@@ -305,6 +307,7 @@ class DirectorDeleteView(LoginRequiredMixin, DeleteView):
     context_object_name = 'director'
     success_url = reverse_lazy('films:film_list')
     
+    
 class AddReviewView(LoginRequiredMixin, FormView):
     form_class = ReviewForm
     template_name = 'films/add_review.html'
@@ -324,3 +327,23 @@ class AddReviewView(LoginRequiredMixin, FormView):
         review.film = film
         review.save()
         return redirect(film.get_absolute_url())
+
+
+class RegisterView(CreateView):
+    form_class = CustomRegistrationForm
+    template_name = 'registration/register.html'
+    success_url = reverse_lazy('films:index')
+
+    def form_valid(self, form):
+        response = super().form_valid(form)
+        
+        # аутентифицируем пользователя явно
+        user = authenticate(
+            self.request,
+            username=form.cleaned_data['email'],
+            password=form.cleaned_data['password1'],
+        )
+
+        if user is not None:
+            login(self.request, user)
+        return response
