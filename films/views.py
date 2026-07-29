@@ -283,13 +283,13 @@ class DirectorDetailView(DetailView):
         return context
 
 
-class DirectorCreateView(CreateView):
+class DirectorCreateView(LoginRequiredMixin, CreateView):
     model = Director
     form_class = DirectorForm
     template_name = 'films/director_form.html'
 
 
-class DirectorUpdateView(UpdateView):
+class DirectorUpdateView(LoginRequiredMixin, UpdateView):
     model = Director
     form_class = DirectorForm
     template_name = 'films/director_form.html'
@@ -299,13 +299,13 @@ class DirectorUpdateView(UpdateView):
         return self.object.get_absolute_url()
 
 
-class DirectorDeleteView(DeleteView):
+class DirectorDeleteView(LoginRequiredMixin, DeleteView):
     model = Director
     template_name = 'films/director_confirm_delete.html'
     context_object_name = 'director'
     success_url = reverse_lazy('films:film_list')
     
-class AddReviewView(FormView):
+class AddReviewView(LoginRequiredMixin, FormView):
     form_class = ReviewForm
     template_name = 'films/add_review.html'
     # success_url = reverse_lazy('films:film_list')  # всегда на список фильмов

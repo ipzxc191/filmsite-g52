@@ -9,6 +9,7 @@ admin.site.index_title = 'Панель администратора'
 
 urlpatterns = [
     path('admin/', admin.site.urls),
+    path('accounts/', include('django.contrib.auth.urls')),
     path('', include('films.urls')),
 ]
 

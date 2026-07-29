@@ -1,0 +1,22 @@
+{% extends 'base.html' %}
+
+{% block title %}Вход — Сайт фильмов{% endblock %}
+
+{% block content %}
+    <h1>Вход на сайт</h1>
+
+    {% if form.errors %}
+        <div class="error">
+            <p>Неверное имя пользователя или пароль. Попробуйте снова.</p>
+        </div>
+    {% endif %}
+
+    <form method="POST">
+        {% csrf_token %}
+        {{ form.as_p }}
+        <input type="hidden" name="next" value="{{ next }}">
+        <button type="submit">Войти</button>
+    </form>
+
+    {% comment %} <p>Ещё нет аккаунта? <a href="{% url 'register' %}">Зарегистрироваться</a></p> {% endcomment %}
+{% endblock %}
