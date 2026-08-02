@@ -13,6 +13,7 @@ urlpatterns = [
     path('', views.IndexView.as_view(), name='index'),
     path('about/', views.AboutView.as_view(), name='about'),
     path('stats/', views.CatalogStatsView.as_view(), name='catalog_stats'),
+    path('profile/', views.ProfileView.as_view(), name='profile'),
     path('films/', views.FilmListView.as_view(), name='film_list'),
     path('films/add/', views.FilmCreateView.as_view(), name='add_film'),
     path('films/<slug:slug>/', views.FilmDetailView.as_view(), name='film_detail'),

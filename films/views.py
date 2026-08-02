@@ -180,8 +180,8 @@ from django.db.models import F
 from django.contrib.auth.forms import UserCreationForm
 from django.contrib.auth import authenticate, login
 
-from .forms import FilmForm, DirectorForm
-from .models import Film, FilmStats, Director
+from .forms import FilmForm, DirectorForm, UserUpdateForm, ProfileUpdateForm
+from .models import Film, FilmStats, Director, UserProfile
 
 
 class IndexView(TemplateView):
@@ -337,7 +337,8 @@ class RegisterView(CreateView):
     def form_valid(self, form):
         response = super().form_valid(form)
         
-        # аутентифицируем пользователя явно
+        UserProfile.objects.create(user=self.object)  # создаем профиль пользователя
+        
         user = authenticate(
             self.request,
             username=form.cleaned_data['email'],
@@ -347,3 +348,32 @@ class RegisterView(CreateView):
         if user is not None:
             login(self.request, user)
         return response
+
+
+class ProfileView(LoginRequiredMixin, View):
+    template_name = 'films/profile.html'
+
+    def get(self, request):
+        user_form = UserUpdateForm(instance=request.user)
+        profile_form = ProfileUpdateForm(instance=request.user.profile)
+        return render(request, self.template_name, {
+            'user_form': user_form,
+            'profile_form': profile_form,
+        })
+
+    def post(self, request):
+        user_form = UserUpdateForm(request.POST, instance=request.user)
+        profile_form = ProfileUpdateForm(
+            request.POST,
+            request.FILES,
+            instance=request.user.profile
+        )
+        if user_form.is_valid() and profile_form.is_valid():
+            user_form.save()
+            profile_form.save()
+            return redirect('films:profile')
+
+        return render(request, self.template_name, {
+            'user_form': user_form,
+            'profile_form': profile_form,
+        })

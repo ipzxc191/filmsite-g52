@@ -2,7 +2,24 @@ from django import forms
 from django.contrib.auth.forms import UserCreationForm, AuthenticationForm
 from django.contrib.auth.models import User
 
-from .models import Actor, Film, Review, Director
+from .models import Actor, Film, Review, Director, UserProfile
+
+
+class UserUpdateForm(forms.ModelForm):
+    """Редактирование базовых полей пользователя."""
+    class Meta:
+        model = User
+        fields = ['first_name', 'last_name', 'email']
+
+
+class ProfileUpdateForm(forms.ModelForm):
+    """Редактирование профиля."""
+    class Meta:
+        model = UserProfile
+        fields = ['avatar', 'bio']
+        widgets = {
+            'bio': forms.Textarea(attrs={'rows': 4}),
+        }
 
 
 class FilmForm(forms.ModelForm):

@@ -19,7 +19,14 @@
             <span class="nav-auth">
                 {% if user.is_authenticated %}
                     | <a href="{% url 'films:add_film' %}">Добавить фильм</a>
-                    | {{ user.username }}
+                    {% if user.is_authenticated and user_profile and user_profile.avatar %}
+                        <a href="{% url 'films:profile' %}">
+                            | <img src="{{ user_profile.avatar.url }}" alt="{{ user.username }}" width="32">
+                        </a>
+                    {% endif %}
+                    <a href="{% url 'films:profile' %}">
+                        | {{ user.username }}
+                    </a>
                     | <a href="{% url 'password_change' %}">Сменить пароль</a>
                     <form method="POST" action="{% url 'logout' %}" style="display: inline;">
                         {% csrf_token %}
@@ -41,6 +48,7 @@
     </aside>
 
     <footer>
+        <p>В каталоге {{ total_films }} фильмов и {{ total_genres }} жанров</p>
         <p>© {% current_year %} Сайт фильмов</p>
     </footer>
 

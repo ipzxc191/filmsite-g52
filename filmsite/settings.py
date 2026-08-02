@@ -61,6 +61,8 @@ TEMPLATES = [
                 'django.template.context_processors.request',
                 'django.contrib.auth.context_processors.auth',
                 'django.contrib.messages.context_processors.messages',
+                'films.context_processors.catalog_stats',
+                'films.context_processors.user_profile',
             ],
             'string_if_invalid': '[MISSING: %s]',
         },

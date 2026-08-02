@@ -1,0 +1,23 @@
+{% extends 'base.html' %}
+
+{% block title %}Профиль — {{ user.username }}{% endblock %}
+
+{% block content %}
+    <h1>Профиль: {{ user.username }}</h1>
+
+    {% if user.profile.avatar %}
+        <img src="{{ user.profile.avatar.url }}" alt="Аватар" width="150">
+    {% endif %}
+
+    <form method="POST" enctype="multipart/form-data">
+        {% csrf_token %}
+
+        <h2>Личные данные</h2>
+        {{ user_form.as_p }}
+
+        <h2>О себе</h2>
+        {{ profile_form.as_p }}
+
+        <button type="submit">Сохранить</button>
+    </form>
+{% endblock %}
