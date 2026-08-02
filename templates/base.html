@@ -20,6 +20,7 @@
                 {% if user.is_authenticated %}
                     | <a href="{% url 'films:add_film' %}">Добавить фильм</a>
                     | {{ user.username }}
+                    | <a href="{% url 'password_change' %}">Сменить пароль</a>
                     <form method="POST" action="{% url 'logout' %}" style="display: inline;">
                         {% csrf_token %}
                         <button type="submit" class="nav-link-btn">Выйти</button>
