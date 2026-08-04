@@ -1,0 +1,1610 @@
+[
+{
+  "model": "admin.logentry",
+  "pk": 1,
+  "fields": {
+    "action_time": "2026-07-22T11:39:06.593Z",
+    "user": 1,
+    "content_type": 9,
+    "object_id": "62",
+    "object_repr": "Джокер (2019)",
+    "action_flag": 2,
+    "change_message": "[{\"changed\": {\"fields\": [\"\\u041f\\u043e\\u0441\\u0442\\u0435\\u0440\"]}}]"
+  }
+},
+{
+  "model": "admin.logentry",
+  "pk": 2,
+  "fields": {
+    "action_time": "2026-07-22T11:40:24.896Z",
+    "user": 1,
+    "content_type": 9,
+    "object_id": "58",
+    "object_repr": "Паразиты (2019)",
+    "action_flag": 2,
+    "change_message": "[{\"changed\": {\"fields\": [\"\\u041f\\u043e\\u0441\\u0442\\u0435\\u0440\"]}}]"
+  }
+},
+{
+  "model": "admin.logentry",
+  "pk": 3,
+  "fields": {
+    "action_time": "2026-07-22T11:40:46.403Z",
+    "user": 1,
+    "content_type": 9,
+    "object_id": "59",
+    "object_repr": "Одержимость (2014)",
+    "action_flag": 2,
+    "change_message": "[{\"changed\": {\"fields\": [\"\\u041f\\u043e\\u0441\\u0442\\u0435\\u0440\"]}}]"
+  }
+},
+{
+  "model": "admin.logentry",
+  "pk": 4,
+  "fields": {
+    "action_time": "2026-07-22T11:41:06.313Z",
+    "user": 1,
+    "content_type": 9,
+    "object_id": "52",
+    "object_repr": "Интерстеллар (2014)",
+    "action_flag": 2,
+    "change_message": "[{\"changed\": {\"fields\": [\"\\u041f\\u043e\\u0441\\u0442\\u0435\\u0440\"]}}]"
+  }
+},
+{
+  "model": "admin.logentry",
+  "pk": 5,
+  "fields": {
+    "action_time": "2026-07-22T11:41:38.276Z",
+    "user": 1,
+    "content_type": 9,
+    "object_id": "61",
+    "object_repr": "Джанго освобождённый (2012)",
+    "action_flag": 2,
+    "change_message": "[{\"changed\": {\"fields\": [\"\\u041f\\u043e\\u0441\\u0442\\u0435\\u0440\"]}}]"
+  }
+},
+{
+  "model": "admin.logentry",
+  "pk": 6,
+  "fields": {
+    "action_time": "2026-07-22T11:41:49.952Z",
+    "user": 1,
+    "content_type": 9,
+    "object_id": "49",
+    "object_repr": "Начало (2010)",
+    "action_flag": 2,
+    "change_message": "[{\"changed\": {\"fields\": [\"\\u041f\\u043e\\u0441\\u0442\\u0435\\u0440\"]}}]"
+  }
+},
+{
+  "model": "admin.logentry",
+  "pk": 7,
+  "fields": {
+    "action_time": "2026-07-22T11:42:05.392Z",
+    "user": 1,
+    "content_type": 9,
+    "object_id": "45",
+    "object_repr": "Тёмный рыцарь (2008)",
+    "action_flag": 2,
+    "change_message": "[{\"changed\": {\"fields\": [\"\\u041f\\u043e\\u0441\\u0442\\u0435\\u0440\"]}}]"
+  }
+},
+{
+  "model": "admin.logentry",
+  "pk": 8,
+  "fields": {
+    "action_time": "2026-07-22T11:42:18.485Z",
+    "user": 1,
+    "content_type": 9,
+    "object_id": "60",
+    "object_repr": "Отступники (2006)",
+    "action_flag": 2,
+    "change_message": "[{\"changed\": {\"fields\": [\"\\u041f\\u043e\\u0441\\u0442\\u0435\\u0440\"]}}]"
+  }
+},
+{
+  "model": "admin.logentry",
+  "pk": 9,
+  "fields": {
+    "action_time": "2026-07-22T11:42:33.064Z",
+    "user": 1,
+    "content_type": 9,
+    "object_id": "53",
+    "object_repr": "Властелин колец: Братство кольца (2001)",
+    "action_flag": 2,
+    "change_message": "[{\"changed\": {\"fields\": [\"\\u041f\\u043e\\u0441\\u0442\\u0435\\u0440\"]}}]"
+  }
+},
+{
+  "model": "admin.logentry",
+  "pk": 10,
+  "fields": {
+    "action_time": "2026-07-22T11:42:48.417Z",
+    "user": 1,
+    "content_type": 9,
+    "object_id": "57",
+    "object_repr": "Гладиатор (2000)",
+    "action_flag": 2,
+    "change_message": "[{\"changed\": {\"fields\": [\"\\u041f\\u043e\\u0441\\u0442\\u0435\\u0440\"]}}]"
+  }
+},
+{
+  "model": "admin.logentry",
+  "pk": 11,
+  "fields": {
+    "action_time": "2026-07-22T11:43:02.299Z",
+    "user": 1,
+    "content_type": 9,
+    "object_id": "50",
+    "object_repr": "Матрица (1999)",
+    "action_flag": 2,
+    "change_message": "[{\"changed\": {\"fields\": [\"\\u041f\\u043e\\u0441\\u0442\\u0435\\u0440\"]}}]"
+  }
+},
+{
+  "model": "admin.logentry",
+  "pk": 12,
+  "fields": {
+    "action_time": "2026-07-22T11:43:21.950Z",
+    "user": 1,
+    "content_type": 9,
+    "object_id": "47",
+    "object_repr": "Бойцовский клуб (1999)",
+    "action_flag": 2,
+    "change_message": "[{\"changed\": {\"fields\": [\"\\u041f\\u043e\\u0441\\u0442\\u0435\\u0440\"]}}]"
+  }
+},
+{
+  "model": "admin.logentry",
+  "pk": 13,
+  "fields": {
+    "action_time": "2026-07-22T11:43:33.056Z",
+    "user": 1,
+    "content_type": 9,
+    "object_id": "54",
+    "object_repr": "Семь (1995)",
+    "action_flag": 2,
+    "change_message": "[{\"changed\": {\"fields\": [\"\\u041f\\u043e\\u0441\\u0442\\u0435\\u0440\"]}}]"
+  }
+},
+{
+  "model": "admin.logentry",
+  "pk": 14,
+  "fields": {
+    "action_time": "2026-07-22T11:43:46.864Z",
+    "user": 1,
+    "content_type": 9,
+    "object_id": "48",
+    "object_repr": "Форрест Гамп (1994)",
+    "action_flag": 2,
+    "change_message": "[{\"changed\": {\"fields\": [\"\\u041f\\u043e\\u0441\\u0442\\u0435\\u0440\"]}}]"
+  }
+},
+{
+  "model": "admin.logentry",
+  "pk": 15,
+  "fields": {
+    "action_time": "2026-07-22T11:43:56.019Z",
+    "user": 1,
+    "content_type": 9,
+    "object_id": "46",
+    "object_repr": "Криминальное чтиво (1994)",
+    "action_flag": 2,
+    "change_message": "[{\"changed\": {\"fields\": [\"\\u041f\\u043e\\u0441\\u0442\\u0435\\u0440\"]}}]"
+  }
+},
+{
+  "model": "admin.logentry",
+  "pk": 16,
+  "fields": {
+    "action_time": "2026-07-22T11:44:12.332Z",
+    "user": 1,
+    "content_type": 9,
+    "object_id": "43",
+    "object_repr": "Побег из Шоушенка (1994)",
+    "action_flag": 2,
+    "change_message": "[{\"changed\": {\"fields\": [\"\\u041f\\u043e\\u0441\\u0442\\u0435\\u0440\"]}}]"
+  }
+},
+{
+  "model": "admin.logentry",
+  "pk": 17,
+  "fields": {
+    "action_time": "2026-07-22T11:44:27.211Z",
+    "user": 1,
+    "content_type": 9,
+    "object_id": "56",
+    "object_repr": "Список Шиндлера (1993)",
+    "action_flag": 2,
+    "change_message": "[{\"changed\": {\"fields\": [\"\\u041f\\u043e\\u0441\\u0442\\u0435\\u0440\"]}}]"
+  }
+},
+{
+  "model": "admin.logentry",
+  "pk": 18,
+  "fields": {
+    "action_time": "2026-07-22T11:44:38.370Z",
+    "user": 1,
+    "content_type": 9,
+    "object_id": "55",
+    "object_repr": "Молчание ягнят (1991)",
+    "action_flag": 2,
+    "change_message": "[{\"changed\": {\"fields\": [\"\\u041f\\u043e\\u0441\\u0442\\u0435\\u0440\"]}}]"
+  }
+},
+{
+  "model": "admin.logentry",
+  "pk": 19,
+  "fields": {
+    "action_time": "2026-07-22T11:44:50.913Z",
+    "user": 1,
+    "content_type": 9,
+    "object_id": "51",
+    "object_repr": "Славные парни (1990)",
+    "action_flag": 2,
+    "change_message": "[{\"changed\": {\"fields\": [\"\\u041f\\u043e\\u0441\\u0442\\u0435\\u0440\"]}}]"
+  }
+},
+{
+  "model": "admin.logentry",
+  "pk": 20,
+  "fields": {
+    "action_time": "2026-07-22T11:45:00.821Z",
+    "user": 1,
+    "content_type": 9,
+    "object_id": "44",
+    "object_repr": "Крёстный отец (1972)",
+    "action_flag": 2,
+    "change_message": "[{\"changed\": {\"fields\": [\"\\u041f\\u043e\\u0441\\u0442\\u0435\\u0440\"]}}]"
+  }
+},
+{
+  "model": "admin.logentry",
+  "pk": 21,
+  "fields": {
+    "action_time": "2026-08-04T13:16:16.202Z",
+    "user": 1,
+    "content_type": 4,
+    "object_id": "2",
+    "object_repr": "user1",
+    "action_flag": 3,
+    "change_message": ""
+  }
+},
+{
+  "model": "admin.logentry",
+  "pk": 22,
+  "fields": {
+    "action_time": "2026-08-04T13:31:25.468Z",
+    "user": 1,
+    "content_type": 2,
+    "object_id": "1",
+    "object_repr": "moderators",
+    "action_flag": 1,
+    "change_message": "[{\"added\": {}}]"
+  }
+},
+{
+  "model": "admin.logentry",
+  "pk": 23,
+  "fields": {
+    "action_time": "2026-08-04T13:31:36.510Z",
+    "user": 1,
+    "content_type": 4,
+    "object_id": "3",
+    "object_repr": "user1",
+    "action_flag": 2,
+    "change_message": "[{\"changed\": {\"fields\": [\"Groups\"]}}]"
+  }
+},
+{
+  "model": "auth.group",
+  "pk": 1,
+  "fields": {
+    "name": "moderators",
+    "permissions": [
+      33,
+      34,
+      35,
+      36,
+      37,
+      38,
+      39,
+      40,
+      25,
+      55,
+      26,
+      27,
+      28,
+      41,
+      42,
+      43,
+      44,
+      29,
+      30,
+      31,
+      32,
+      45,
+      46,
+      47,
+      54,
+      53,
+      48,
+      49,
+      50,
+      51,
+      52
+    ]
+  }
+},
+{
+  "model": "auth.user",
+  "pk": 1,
+  "fields": {
+    "password": "pbkdf2_sha256$1200000$BndJwICVZOVQew2rvXdXwF$inPuwDA7TFVaMJvdyTmYlwWwB1/A8pnOjlS9U61p9ZI=",
+    "last_login": "2026-08-04T13:29:59.095Z",
+    "is_superuser": true,
+    "username": "admin",
+    "first_name": "",
+    "last_name": "",
+    "email": "admin@mail.com",
+    "is_staff": true,
+    "is_active": true,
+    "date_joined": "2026-07-15T11:06:25.370Z",
+    "groups": [],
+    "user_permissions": []
+  }
+},
+{
+  "model": "auth.user",
+  "pk": 3,
+  "fields": {
+    "password": "pbkdf2_sha256$1200000$n0xuugbZcWzMrtKcbxIS68$zSnmwyVkyPcXG8IaoOq3B26i/EF9BVmtj259xGkU6UA=",
+    "last_login": "2026-08-04T13:32:16.807Z",
+    "is_superuser": false,
+    "username": "user1",
+    "first_name": "user",
+    "last_name": "user",
+    "email": "u1@mail.ru",
+    "is_staff": false,
+    "is_active": true,
+    "date_joined": "2026-08-04T13:24:54Z",
+    "groups": [
+      1
+    ],
+    "user_permissions": []
+  }
+},
+{
+  "model": "auth.user",
+  "pk": 4,
+  "fields": {
+    "password": "pbkdf2_sha256$1200000$qprvxTHW1kZ1ioG4KQNQS9$EJGMuknFuJ1V+PWwWX4lY8AhRxeZud5fUYwgKrQaFDE=",
+    "last_login": "2026-08-04T13:33:03.901Z",
+    "is_superuser": false,
+    "username": "user2",
+    "first_name": "user",
+    "last_name": "user",
+    "email": "u2@gmail.ru",
+    "is_staff": false,
+    "is_active": true,
+    "date_joined": "2026-08-04T13:25:31.681Z",
+    "groups": [],
+    "user_permissions": []
+  }
+},
+{
+  "model": "films.userprofile",
+  "pk": 1,
+  "fields": {
+    "user": 1,
+    "avatar": "",
+    "bio": ""
+  }
+},
+{
+  "model": "films.userprofile",
+  "pk": 3,
+  "fields": {
+    "user": 3,
+    "avatar": "",
+    "bio": ""
+  }
+},
+{
+  "model": "films.userprofile",
+  "pk": 4,
+  "fields": {
+    "user": 4,
+    "avatar": "",
+    "bio": ""
+  }
+},
+{
+  "model": "films.director",
+  "pk": 31,
+  "fields": {
+    "name": "Фрэнк Дарабонт",
+    "bio": "Американский режиссёр и сценарист, известен экранизациями произведений Стивена Кинга.",
+    "photo": "",
+    "slug": "frenk-darabont"
+  }
+},
+{
+  "model": "films.director",
+  "pk": 32,
+  "fields": {
+    "name": "Фрэнсис Форд Коппола",
+    "bio": "Один из ключевых режиссёров «Нового Голливуда», автор трилогии «Крёстный отец».",
+    "photo": "",
+    "slug": "frensis-ford-koppola"
+  }
+},
+{
+  "model": "films.director",
+  "pk": 33,
+  "fields": {
+    "name": "Кристофер Нолан",
+    "bio": "Британо-американский режиссёр, известен нелинейным повествованием и масштабными постановками.",
+    "photo": "",
+    "slug": "kristofer-nolan"
+  }
+},
+{
+  "model": "films.director",
+  "pk": 34,
+  "fields": {
+    "name": "Квентин Тарантино",
+    "bio": "Режиссёр и сценарист, известен нелинейными сюжетами и цитатным стилем.",
+    "photo": "",
+    "slug": "kventin-tarantino"
+  }
+},
+{
+  "model": "films.director",
+  "pk": 35,
+  "fields": {
+    "name": "Дэвид Финчер",
+    "bio": "Режиссёр, известен мрачной атмосферой и вниманием к деталям монтажа.",
+    "photo": "",
+    "slug": "devid-fincher"
+  }
+},
+{
+  "model": "films.director",
+  "pk": 36,
+  "fields": {
+    "name": "Роберт Земекис",
+    "bio": "Режиссёр, работающий на стыке драмы и технологических новшеств в кино.",
+    "photo": "",
+    "slug": "robert-zemekis"
+  }
+},
+{
+  "model": "films.director",
+  "pk": 37,
+  "fields": {
+    "name": "Лана Вачовски",
+    "bio": "Режиссёр и сценарист, соавтор трилогии «Матрица».",
+    "photo": "",
+    "slug": "lana-vachovski"
+  }
+},
+{
+  "model": "films.director",
+  "pk": 38,
+  "fields": {
+    "name": "Мартин Скорсезе",
+    "bio": "Классик американского кино, мастер криминальной драмы.",
+    "photo": "",
+    "slug": "martin-skorseze"
+  }
+},
+{
+  "model": "films.director",
+  "pk": 39,
+  "fields": {
+    "name": "Питер Джексон",
+    "bio": "Новозеландский режиссёр, известен трилогией «Властелин колец».",
+    "photo": "",
+    "slug": "piter-dzhekson"
+  }
+},
+{
+  "model": "films.director",
+  "pk": 40,
+  "fields": {
+    "name": "Джонатан Демме",
+    "bio": "Американский режиссёр, лауреат «Оскара» за «Молчание ягнят».",
+    "photo": "",
+    "slug": "dzhonatan-demme"
+  }
+},
+{
+  "model": "films.director",
+  "pk": 41,
+  "fields": {
+    "name": "Стивен Спилберг",
+    "bio": "Один из самых успешных режиссёров в истории кино.",
+    "photo": "",
+    "slug": "stiven-spilberg"
+  }
+},
+{
+  "model": "films.director",
+  "pk": 42,
+  "fields": {
+    "name": "Ридли Скотт",
+    "bio": "Британский режиссёр, известен масштабными историческими и фантастическими фильмами.",
+    "photo": "",
+    "slug": "ridli-skott"
+  }
+},
+{
+  "model": "films.director",
+  "pk": 43,
+  "fields": {
+    "name": "Пон Джун-хо",
+    "bio": "Южнокорейский режиссёр, лауреат «Оскара» за фильм «Паразиты».",
+    "photo": "",
+    "slug": "pon-dzhun-kho"
+  }
+},
+{
+  "model": "films.director",
+  "pk": 44,
+  "fields": {
+    "name": "Дэмьен Шазелл",
+    "bio": "Режиссёр, известен фильмами о музыке и одержимости мастерством.",
+    "photo": "",
+    "slug": "demen-shazell"
+  }
+},
+{
+  "model": "films.director",
+  "pk": 45,
+  "fields": {
+    "name": "Тодд Филлипс",
+    "bio": "Режиссёр, известен как комедиями, так и драмами о психологических кризисах.",
+    "photo": "",
+    "slug": "todd-fillips"
+  }
+},
+{
+  "model": "films.actor",
+  "pk": 77,
+  "fields": {
+    "name": "Тим Роббинс",
+    "photo": ""
+  }
+},
+{
+  "model": "films.actor",
+  "pk": 78,
+  "fields": {
+    "name": "Морган Фриман",
+    "photo": ""
+  }
+},
+{
+  "model": "films.actor",
+  "pk": 79,
+  "fields": {
+    "name": "Марлон Брандо",
+    "photo": ""
+  }
+},
+{
+  "model": "films.actor",
+  "pk": 80,
+  "fields": {
+    "name": "Аль Пачино",
+    "photo": ""
+  }
+},
+{
+  "model": "films.actor",
+  "pk": 81,
+  "fields": {
+    "name": "Кристиан Бейл",
+    "photo": ""
+  }
+},
+{
+  "model": "films.actor",
+  "pk": 82,
+  "fields": {
+    "name": "Хит Леджер",
+    "photo": ""
+  }
+},
+{
+  "model": "films.actor",
+  "pk": 83,
+  "fields": {
+    "name": "Джон Траволта",
+    "photo": ""
+  }
+},
+{
+  "model": "films.actor",
+  "pk": 84,
+  "fields": {
+    "name": "Сэмюэл Л. Джексон",
+    "photo": ""
+  }
+},
+{
+  "model": "films.actor",
+  "pk": 85,
+  "fields": {
+    "name": "Ума Турман",
+    "photo": ""
+  }
+},
+{
+  "model": "films.actor",
+  "pk": 86,
+  "fields": {
+    "name": "Брэд Питт",
+    "photo": ""
+  }
+},
+{
+  "model": "films.actor",
+  "pk": 87,
+  "fields": {
+    "name": "Эдвард Нортон",
+    "photo": ""
+  }
+},
+{
+  "model": "films.actor",
+  "pk": 88,
+  "fields": {
+    "name": "Том Хэнкс",
+    "photo": ""
+  }
+},
+{
+  "model": "films.actor",
+  "pk": 89,
+  "fields": {
+    "name": "Робин Райт",
+    "photo": ""
+  }
+},
+{
+  "model": "films.actor",
+  "pk": 90,
+  "fields": {
+    "name": "Леонардо ДиКаприо",
+    "photo": ""
+  }
+},
+{
+  "model": "films.actor",
+  "pk": 91,
+  "fields": {
+    "name": "Джозеф Гордон-Левитт",
+    "photo": ""
+  }
+},
+{
+  "model": "films.actor",
+  "pk": 92,
+  "fields": {
+    "name": "Киану Ривз",
+    "photo": ""
+  }
+},
+{
+  "model": "films.actor",
+  "pk": 93,
+  "fields": {
+    "name": "Лоуренс Фишбёрн",
+    "photo": ""
+  }
+},
+{
+  "model": "films.actor",
+  "pk": 94,
+  "fields": {
+    "name": "Роберт Де Ниро",
+    "photo": ""
+  }
+},
+{
+  "model": "films.actor",
+  "pk": 95,
+  "fields": {
+    "name": "Рэй Лиотта",
+    "photo": ""
+  }
+},
+{
+  "model": "films.actor",
+  "pk": 96,
+  "fields": {
+    "name": "Джо Пеши",
+    "photo": ""
+  }
+},
+{
+  "model": "films.actor",
+  "pk": 97,
+  "fields": {
+    "name": "Мэттью Макконахи",
+    "photo": ""
+  }
+},
+{
+  "model": "films.actor",
+  "pk": 98,
+  "fields": {
+    "name": "Энн Хэтэуэй",
+    "photo": ""
+  }
+},
+{
+  "model": "films.actor",
+  "pk": 99,
+  "fields": {
+    "name": "Элайджа Вуд",
+    "photo": ""
+  }
+},
+{
+  "model": "films.actor",
+  "pk": 100,
+  "fields": {
+    "name": "Иэн Маккеллен",
+    "photo": ""
+  }
+},
+{
+  "model": "films.actor",
+  "pk": 101,
+  "fields": {
+    "name": "Джоди Фостер",
+    "photo": ""
+  }
+},
+{
+  "model": "films.actor",
+  "pk": 102,
+  "fields": {
+    "name": "Энтони Хопкинс",
+    "photo": ""
+  }
+},
+{
+  "model": "films.actor",
+  "pk": 103,
+  "fields": {
+    "name": "Лиам Нисон",
+    "photo": ""
+  }
+},
+{
+  "model": "films.actor",
+  "pk": 104,
+  "fields": {
+    "name": "Рэйф Файнс",
+    "photo": ""
+  }
+},
+{
+  "model": "films.actor",
+  "pk": 105,
+  "fields": {
+    "name": "Рассел Кроу",
+    "photo": ""
+  }
+},
+{
+  "model": "films.actor",
+  "pk": 106,
+  "fields": {
+    "name": "Хоакин Феникс",
+    "photo": ""
+  }
+},
+{
+  "model": "films.actor",
+  "pk": 107,
+  "fields": {
+    "name": "Сон Кан-хо",
+    "photo": ""
+  }
+},
+{
+  "model": "films.actor",
+  "pk": 108,
+  "fields": {
+    "name": "Ли Сон-гюн",
+    "photo": ""
+  }
+},
+{
+  "model": "films.actor",
+  "pk": 109,
+  "fields": {
+    "name": "Майлз Теллер",
+    "photo": ""
+  }
+},
+{
+  "model": "films.actor",
+  "pk": 110,
+  "fields": {
+    "name": "Джей Кей Симмонс",
+    "photo": ""
+  }
+},
+{
+  "model": "films.actor",
+  "pk": 111,
+  "fields": {
+    "name": "Мэтт Дэймон",
+    "photo": ""
+  }
+},
+{
+  "model": "films.actor",
+  "pk": 112,
+  "fields": {
+    "name": "Джек Николсон",
+    "photo": ""
+  }
+},
+{
+  "model": "films.actor",
+  "pk": 113,
+  "fields": {
+    "name": "Джейми Фокс",
+    "photo": ""
+  }
+},
+{
+  "model": "films.actor",
+  "pk": 114,
+  "fields": {
+    "name": "Кристоф Вальц",
+    "photo": ""
+  }
+},
+{
+  "model": "films.genre",
+  "pk": 23,
+  "fields": {
+    "name": "Драма",
+    "slug": "drama"
+  }
+},
+{
+  "model": "films.genre",
+  "pk": 24,
+  "fields": {
+    "name": "Криминал",
+    "slug": "kriminal"
+  }
+},
+{
+  "model": "films.genre",
+  "pk": 25,
+  "fields": {
+    "name": "Боевик",
+    "slug": "boevik"
+  }
+},
+{
+  "model": "films.genre",
+  "pk": 26,
+  "fields": {
+    "name": "Фантастика",
+    "slug": "fantastika"
+  }
+},
+{
+  "model": "films.genre",
+  "pk": 27,
+  "fields": {
+    "name": "Триллер",
+    "slug": "triller"
+  }
+},
+{
+  "model": "films.genre",
+  "pk": 28,
+  "fields": {
+    "name": "Мелодрама",
+    "slug": "melodrama"
+  }
+},
+{
+  "model": "films.genre",
+  "pk": 29,
+  "fields": {
+    "name": "Фэнтези",
+    "slug": "fentezi"
+  }
+},
+{
+  "model": "films.genre",
+  "pk": 30,
+  "fields": {
+    "name": "Приключения",
+    "slug": "prikliucheniia"
+  }
+},
+{
+  "model": "films.genre",
+  "pk": 31,
+  "fields": {
+    "name": "История",
+    "slug": "istoriia"
+  }
+},
+{
+  "model": "films.genre",
+  "pk": 32,
+  "fields": {
+    "name": "Музыка",
+    "slug": "muzyka"
+  }
+},
+{
+  "model": "films.genre",
+  "pk": 33,
+  "fields": {
+    "name": "Вестерн",
+    "slug": "vestern"
+  }
+},
+{
+  "model": "films.genre",
+  "pk": 34,
+  "fields": {
+    "name": "Комедия",
+    "slug": "komediya"
+  }
+},
+{
+  "model": "films.film",
+  "pk": 43,
+  "fields": {
+    "title": "Побег из Шоушенка",
+    "year": 1994,
+    "description": "История банкира, несправедливо осуждённого за убийство жены, и его многолетней дружбы с заключённым внутри тюрьмы Шоушенк.",
+    "rating": "9.3",
+    "slug": "pobeg-iz-shoushenka",
+    "poster": "posters/pobeg-iz-shoushenka.webp",
+    "created_at": "2026-07-19T15:59:26.124Z",
+    "director": 31,
+    "genres": [
+      23
+    ],
+    "actors": [
+      78,
+      77
+    ]
+  }
+},
+{
+  "model": "films.film",
+  "pk": 44,
+  "fields": {
+    "title": "Крёстный отец",
+    "year": 1972,
+    "description": "Хроника нью-йоркской мафиозной семьи Корлеоне и передачи власти от старого дона к младшему сыну.",
+    "rating": "9.2",
+    "slug": "krestnyi-otets",
+    "poster": "posters/krestnyi-otets.webp",
+    "created_at": "2026-07-19T15:59:26.127Z",
+    "director": 32,
+    "genres": [
+      23,
+      24
+    ],
+    "actors": [
+      80,
+      79
+    ]
+  }
+},
+{
+  "model": "films.film",
+  "pk": 45,
+  "fields": {
+    "title": "Тёмный рыцарь",
+    "year": 2008,
+    "description": "Бэтмен вступает в противостояние с Джокером, чьи хаотичные планы ставят под угрозу весь Готэм.",
+    "rating": "9.0",
+    "slug": "temnyi-rytsar",
+    "poster": "posters/temnyi-rytsar.webp",
+    "created_at": "2026-07-19T15:59:26.128Z",
+    "director": 33,
+    "genres": [
+      25,
+      23,
+      24
+    ],
+    "actors": [
+      81,
+      82
+    ]
+  }
+},
+{
+  "model": "films.film",
+  "pk": 46,
+  "fields": {
+    "title": "Криминальное чтиво",
+    "year": 1994,
+    "description": "Несколько переплетающихся историй из жизни лос-анджелесских бандитов, боксёров и их окружения.",
+    "rating": "8.9",
+    "slug": "kriminalnoe-chtivo",
+    "poster": "posters/kriminalnoe-chtivo.webp",
+    "created_at": "2026-07-19T15:59:26.130Z",
+    "director": 34,
+    "genres": [
+      23,
+      24
+    ],
+    "actors": [
+      83,
+      84,
+      85
+    ]
+  }
+},
+{
+  "model": "films.film",
+  "pk": 47,
+  "fields": {
+    "title": "Бойцовский клуб",
+    "year": 1999,
+    "description": "Офисный работник, страдающий бессонницей, знакомится с харизматичным продавцом мыла и создаёт с ним подпольный бойцовский клуб.",
+    "rating": "8.8",
+    "slug": "boitsovskii-klub",
+    "poster": "posters/boitsovskii-klub.webp",
+    "created_at": "2026-07-19T15:59:26.131Z",
+    "director": 35,
+    "genres": [
+      23
+    ],
+    "actors": [
+      86,
+      87
+    ]
+  }
+},
+{
+  "model": "films.film",
+  "pk": 48,
+  "fields": {
+    "title": "Форрест Гамп",
+    "year": 1994,
+    "description": "История простодушного парня из Алабамы, ставшего невольным свидетелем и участником ключевых событий американской истории.",
+    "rating": "8.8",
+    "slug": "forrest-gamp",
+    "poster": "posters/forrest-gamp.webp",
+    "created_at": "2026-07-19T15:59:26.132Z",
+    "director": 36,
+    "genres": [
+      23,
+      28
+    ],
+    "actors": [
+      89,
+      88
+    ]
+  }
+},
+{
+  "model": "films.film",
+  "pk": 49,
+  "fields": {
+    "title": "Начало",
+    "year": 2010,
+    "description": "Специалист по внедрению идей в чужие сны получает задание провернуть обратную операцию — внушение мысли, а не её кражу.",
+    "rating": "8.8",
+    "slug": "nachalo",
+    "poster": "posters/nachalo.webp",
+    "created_at": "2026-07-19T15:59:26.133Z",
+    "director": 33,
+    "genres": [
+      25,
+      26
+    ],
+    "actors": [
+      91,
+      90
+    ]
+  }
+},
+{
+  "model": "films.film",
+  "pk": 50,
+  "fields": {
+    "title": "Матрица",
+    "year": 1999,
+    "description": "Программист узнаёт, что привычный мир — симуляция, и присоединяется к сопротивлению против машин.",
+    "rating": "8.7",
+    "slug": "matritsa",
+    "poster": "posters/matritsa.webp",
+    "created_at": "2026-07-19T15:59:26.134Z",
+    "director": 37,
+    "genres": [
+      25,
+      26
+    ],
+    "actors": [
+      92,
+      93
+    ]
+  }
+},
+{
+  "model": "films.film",
+  "pk": 51,
+  "fields": {
+    "title": "Славные парни",
+    "year": 1990,
+    "description": "История взлёта и падения мелкого гангстера, ставшего частью нью-йоркской мафии.",
+    "rating": "8.7",
+    "slug": "slavnye-parni",
+    "poster": "posters/slavnye-parni.webp",
+    "created_at": "2026-07-19T15:59:26.136Z",
+    "director": 38,
+    "genres": [
+      23,
+      24
+    ],
+    "actors": [
+      96,
+      94,
+      95
+    ]
+  }
+},
+{
+  "model": "films.film",
+  "pk": 52,
+  "fields": {
+    "title": "Интерстеллар",
+    "year": 2014,
+    "description": "Группа исследователей отправляется через червоточину в поисках нового дома для человечества.",
+    "rating": "8.6",
+    "slug": "interstellar",
+    "poster": "posters/interstellar.webp",
+    "created_at": "2026-07-19T15:59:26.138Z",
+    "director": 33,
+    "genres": [
+      23,
+      30,
+      26
+    ],
+    "actors": [
+      97,
+      98
+    ]
+  }
+},
+{
+  "model": "films.film",
+  "pk": 53,
+  "fields": {
+    "title": "Властелин колец: Братство кольца",
+    "year": 2001,
+    "description": "Хоббит Фродо отправляется в опасное путешествие, чтобы уничтожить кольцо всевластия.",
+    "rating": "8.8",
+    "slug": "vlastelin-kolets-bratstvo-koltsa",
+    "poster": "posters/vlastelin-kolets-bratstvo-koltsa.webp",
+    "created_at": "2026-07-19T15:59:26.139Z",
+    "director": 39,
+    "genres": [
+      30,
+      29
+    ],
+    "actors": [
+      100,
+      99
+    ]
+  }
+},
+{
+  "model": "films.film",
+  "pk": 54,
+  "fields": {
+    "title": "Семь",
+    "year": 1995,
+    "description": "Два детектива расследуют серию убийств, совершённых по мотивам семи смертных грехов.",
+    "rating": "8.6",
+    "slug": "sem",
+    "poster": "posters/sem.webp",
+    "created_at": "2026-07-19T15:59:26.140Z",
+    "director": 35,
+    "genres": [
+      24,
+      27
+    ],
+    "actors": [
+      86,
+      78
+    ]
+  }
+},
+{
+  "model": "films.film",
+  "pk": 55,
+  "fields": {
+    "title": "Молчание ягнят",
+    "year": 1991,
+    "description": "Молодой агент ФБР обращается за помощью к заключённому психиатру-каннибалу, чтобы поймать другого маньяка.",
+    "rating": "8.6",
+    "slug": "molchanie-iagniat",
+    "poster": "posters/molchanie-iagniat.webp",
+    "created_at": "2026-07-19T15:59:26.142Z",
+    "director": 40,
+    "genres": [
+      24,
+      27
+    ],
+    "actors": [
+      101,
+      102
+    ]
+  }
+},
+{
+  "model": "films.film",
+  "pk": 56,
+  "fields": {
+    "title": "Список Шиндлера",
+    "year": 1993,
+    "description": "Немецкий предприниматель спасает более тысячи евреев во время Холокоста, нанимая их на свою фабрику.",
+    "rating": "8.9",
+    "slug": "spisok-shindlera",
+    "poster": "posters/spisok-shindlera.webp",
+    "created_at": "2026-07-19T15:59:26.143Z",
+    "director": 41,
+    "genres": [
+      23,
+      31
+    ],
+    "actors": [
+      103,
+      104
+    ]
+  }
+},
+{
+  "model": "films.film",
+  "pk": 57,
+  "fields": {
+    "title": "Гладиатор",
+    "year": 2000,
+    "description": "Римский полководец, преданный императором, становится рабом и гладиатором, чтобы отомстить за свою семью.",
+    "rating": "8.5",
+    "slug": "gladiator",
+    "poster": "posters/gladiator.webp",
+    "created_at": "2026-07-19T15:59:26.145Z",
+    "director": 42,
+    "genres": [
+      25,
+      23
+    ],
+    "actors": [
+      105,
+      106
+    ]
+  }
+},
+{
+  "model": "films.film",
+  "pk": 58,
+  "fields": {
+    "title": "Паразиты",
+    "year": 2019,
+    "description": "Бедная семья хитростью устраивается на работу в доме богатого семейства, что запускает цепь неожиданных событий.",
+    "rating": "8.5",
+    "slug": "parazity",
+    "poster": "posters/parazity.webp",
+    "created_at": "2026-07-19T15:59:26.147Z",
+    "director": 43,
+    "genres": [
+      23,
+      27
+    ],
+    "actors": [
+      108,
+      107
+    ]
+  }
+},
+{
+  "model": "films.film",
+  "pk": 59,
+  "fields": {
+    "title": "Одержимость",
+    "year": 2014,
+    "description": "Молодой барабанщик консерватории попадает под жёсткое наставничество амбициозного дирижёра.",
+    "rating": "8.5",
+    "slug": "oderzhimost",
+    "poster": "posters/oderzhimost.webp",
+    "created_at": "2026-07-19T15:59:26.148Z",
+    "director": 44,
+    "genres": [
+      23,
+      32
+    ],
+    "actors": [
+      110,
+      109
+    ]
+  }
+},
+{
+  "model": "films.film",
+  "pk": 60,
+  "fields": {
+    "title": "Отступники",
+    "year": 2006,
+    "description": "Полицейский внедряется в бостонскую мафию, пока агент мафии работает под прикрытием в полиции.",
+    "rating": "8.5",
+    "slug": "otstupniki",
+    "poster": "posters/otstupniki.webp",
+    "created_at": "2026-07-19T15:59:26.149Z",
+    "director": 38,
+    "genres": [
+      23,
+      24,
+      27
+    ],
+    "actors": [
+      112,
+      90,
+      111
+    ]
+  }
+},
+{
+  "model": "films.film",
+  "pk": 61,
+  "fields": {
+    "title": "Джанго освобождённый",
+    "year": 2012,
+    "description": "Освобождённый раб вместе с охотником за головами отправляется спасать свою жену из рабства.",
+    "rating": "8.4",
+    "slug": "dzhango-osvobozhdennyi",
+    "poster": "posters/dzhango-osvobozhdennyi.webp",
+    "created_at": "2026-07-19T15:59:26.151Z",
+    "director": 34,
+    "genres": [
+      33,
+      23
+    ],
+    "actors": [
+      113,
+      114
+    ]
+  }
+},
+{
+  "model": "films.film",
+  "pk": 62,
+  "fields": {
+    "title": "Джокер",
+    "year": 2019,
+    "description": "История одинокого неудачливого комика, постепенно превращающегося в культового злодея Готэма.",
+    "rating": "8.4",
+    "slug": "dzhoker",
+    "poster": "posters/dzhoker.webp",
+    "created_at": "2026-07-19T15:59:26.152Z",
+    "director": 45,
+    "genres": [
+      23,
+      24,
+      27
+    ],
+    "actors": [
+      94,
+      106
+    ]
+  }
+},
+{
+  "model": "films.filmstats",
+  "pk": 42,
+  "fields": {
+    "film": 43,
+    "views_count": 28634,
+    "likes_count": 4672
+  }
+},
+{
+  "model": "films.filmstats",
+  "pk": 43,
+  "fields": {
+    "film": 44,
+    "views_count": 1150,
+    "likes_count": 1338
+  }
+},
+{
+  "model": "films.filmstats",
+  "pk": 44,
+  "fields": {
+    "film": 45,
+    "views_count": 21784,
+    "likes_count": 3418
+  }
+},
+{
+  "model": "films.filmstats",
+  "pk": 45,
+  "fields": {
+    "film": 46,
+    "views_count": 38943,
+    "likes_count": 1173
+  }
+},
+{
+  "model": "films.filmstats",
+  "pk": 46,
+  "fields": {
+    "film": 47,
+    "views_count": 33229,
+    "likes_count": 2329
+  }
+},
+{
+  "model": "films.filmstats",
+  "pk": 47,
+  "fields": {
+    "film": 48,
+    "views_count": 17766,
+    "likes_count": 901
+  }
+},
+{
+  "model": "films.filmstats",
+  "pk": 48,
+  "fields": {
+    "film": 49,
+    "views_count": 4988,
+    "likes_count": 1676
+  }
+},
+{
+  "model": "films.filmstats",
+  "pk": 49,
+  "fields": {
+    "film": 50,
+    "views_count": 15006,
+    "likes_count": 2135
+  }
+},
+{
+  "model": "films.filmstats",
+  "pk": 50,
+  "fields": {
+    "film": 51,
+    "views_count": 13080,
+    "likes_count": 4016
+  }
+},
+{
+  "model": "films.filmstats",
+  "pk": 51,
+  "fields": {
+    "film": 52,
+    "views_count": 20225,
+    "likes_count": 3046
+  }
+},
+{
+  "model": "films.filmstats",
+  "pk": 52,
+  "fields": {
+    "film": 53,
+    "views_count": 40772,
+    "likes_count": 3817
+  }
+},
+{
+  "model": "films.filmstats",
+  "pk": 53,
+  "fields": {
+    "film": 54,
+    "views_count": 31095,
+    "likes_count": 3615
+  }
+},
+{
+  "model": "films.filmstats",
+  "pk": 54,
+  "fields": {
+    "film": 55,
+    "views_count": 44411,
+    "likes_count": 1878
+  }
+},
+{
+  "model": "films.filmstats",
+  "pk": 55,
+  "fields": {
+    "film": 56,
+    "views_count": 3676,
+    "likes_count": 2504
+  }
+},
+{
+  "model": "films.filmstats",
+  "pk": 56,
+  "fields": {
+    "film": 57,
+    "views_count": 34008,
+    "likes_count": 3207
+  }
+},
+{
+  "model": "films.filmstats",
+  "pk": 57,
+  "fields": {
+    "film": 58,
+    "views_count": 38613,
+    "likes_count": 1269
+  }
+},
+{
+  "model": "films.filmstats",
+  "pk": 58,
+  "fields": {
+    "film": 59,
+    "views_count": 38740,
+    "likes_count": 171
+  }
+},
+{
+  "model": "films.filmstats",
+  "pk": 59,
+  "fields": {
+    "film": 60,
+    "views_count": 42518,
+    "likes_count": 4338
+  }
+},
+{
+  "model": "films.filmstats",
+  "pk": 60,
+  "fields": {
+    "film": 61,
+    "views_count": 13456,
+    "likes_count": 4041
+  }
+},
+{
+  "model": "films.filmstats",
+  "pk": 61,
+  "fields": {
+    "film": 62,
+    "views_count": 12312,
+    "likes_count": 4129
+  }
+},
+{
+  "model": "films.review",
+  "pk": 1,
+  "fields": {
+    "film": 58,
+    "author_name": "Egor",
+    "text": "Отличный фильм. Очень понравился этот отличный фильм.",
+    "rating": 8,
+    "created_at": "2026-07-26T16:26:46.733Z"
+  }
+}
+]
