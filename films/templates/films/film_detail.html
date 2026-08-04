@@ -45,9 +45,18 @@
         <p>Просмотров: {{ film.stats.views_count }}</p>
     {% endif %}
 
+    {% if user.is_authenticated %}
+        <a href="{% url 'films:add_review' slug=film.slug %}">Оставить рецензию</a>
+    {% endif %}
+
     <div class="film-actions">
-        <a href="{% url 'films:film_edit' slug=film.slug %}">Редактировать</a>
-        <a href="{% url 'films:film_delete' slug=film.slug %}">Удалить</a>
+        {% if perms.films.change_film %}
+            <a href="{% url 'films:film_edit' slug=film.slug %}">Редактировать</a>
+        {% endif %}
+
+        {% if perms.films.delete_film %}
+            <a href="{% url 'films:film_delete' slug=film.slug %}">Удалить</a>
+        {% endif %}
     </div>
 
     <a href="{% url 'films:film_list' %}">← Назад к каталогу</a>

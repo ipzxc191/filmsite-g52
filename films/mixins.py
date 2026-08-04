@@ -19,7 +19,7 @@ class FilmEditMixin:
     from .forms import FilmForm
     model = Film
     form_class = FilmForm
-    template_name = 'films/film_form.html'
+    template_name = 'films/add_film.html'
 
 
 class GenreListMixin:

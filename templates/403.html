@@ -1,0 +1,14 @@
+{% extends 'base.html' %}
+
+{% block title %}Доступ запрещён{% endblock %}
+
+{% block content %}
+    <h1>403 — Доступ запрещён</h1>
+    <p>У вас нет прав для выполнения этого действия.</p>
+    {% if not user.is_authenticated %}
+        <p><a href="{% url 'login' %}">Войдите в систему</a>, чтобы получить доступ.</p>
+    {% else %}
+        <p>Если вы считаете, что это ошибка — обратитесь к администратору.</p>
+    {% endif %}
+    <a href="{% url 'films:index' %}">← На главную</a>
+{% endblock %}

@@ -255,12 +255,15 @@ class FilmDetailView(FilmQuerySetMixin, RecentFilmsMixin, DetailView):
         return response
 
 
-class FilmCreateView(LoginRequiredMixin, FilmEditMixin, CreateView):
-    pass
+class FilmCreateView(LoginRequiredMixin, PermissionRequiredMixin, FilmEditMixin, CreateView):
+    permission_required = 'films.add_film'
+    raise_exception = True
     
     
-class FilmUpdateView(LoginRequiredMixin, FilmEditMixin, UpdateView):
+class FilmUpdateView(LoginRequiredMixin, PermissionRequiredMixin, FilmEditMixin, UpdateView):
+    permission_required = 'films.change_film'
     context_object_name = 'film'
+    raise_exception = True
 
     def get_success_url(self):
         return self.object.get_absolute_url()
@@ -272,6 +275,7 @@ class FilmDeleteView(LoginRequiredMixin, PermissionRequiredMixin, DeleteView):
     template_name = 'films/film_confirm_delete.html'
     context_object_name = 'film'
     success_url = reverse_lazy('films:film_list')
+    raise_exception = True
 
 
 class DirectorDetailView(DetailView):
@@ -285,27 +289,33 @@ class DirectorDetailView(DetailView):
         return context
 
 
-class DirectorCreateView(LoginRequiredMixin, CreateView):
+class DirectorCreateView(LoginRequiredMixin, PermissionRequiredMixin, CreateView):
     model = Director
     form_class = DirectorForm
     template_name = 'films/director_form.html'
+    permission_required = 'films.add_director'
+    raise_exception = True
 
 
-class DirectorUpdateView(LoginRequiredMixin, UpdateView):
+class DirectorUpdateView(LoginRequiredMixin, PermissionRequiredMixin, UpdateView):
     model = Director
     form_class = DirectorForm
     template_name = 'films/director_form.html'
+    permission_required = 'films.change_director'
     context_object_name = 'director'
+    raise_exception = True
 
     def get_success_url(self):
         return self.object.get_absolute_url()
 
 
-class DirectorDeleteView(LoginRequiredMixin, DeleteView):
+class DirectorDeleteView(LoginRequiredMixin, PermissionRequiredMixin, DeleteView):
     model = Director
     template_name = 'films/director_confirm_delete.html'
+    permission_required = 'films.delete_director'
     context_object_name = 'director'
     success_url = reverse_lazy('films:film_list')
+    raise_exception = True
     
     
 class AddReviewView(LoginRequiredMixin, FormView):
@@ -325,6 +335,8 @@ class AddReviewView(LoginRequiredMixin, FormView):
         film = self.get_film()
         review = form.save(commit=False)
         review.film = film
+        if self.request.user.has_perm('films.publish_review'):
+            review.is_published = True
         review.save()
         return redirect(film.get_absolute_url())
 

@@ -18,7 +18,9 @@
 
             <span class="nav-auth">
                 {% if user.is_authenticated %}
+                    {% if perms.films.add_film %}
                     | <a href="{% url 'films:add_film' %}">Добавить фильм</a>
+                    {% endif %}
                     {% if user.is_authenticated and user_profile and user_profile.avatar %}
                         <a href="{% url 'films:profile' %}">
                             | <img src="{{ user_profile.avatar.url }}" alt="{{ user.username }}" width="32">
@@ -27,7 +29,6 @@
                     <a href="{% url 'films:profile' %}">
                         | {{ user.username }}
                     </a>
-                    | <a href="{% url 'password_change' %}">Сменить пароль</a>
                     <form method="POST" action="{% url 'logout' %}" style="display: inline;">
                         {% csrf_token %}
                         <button type="submit" class="nav-link-btn">Выйти</button>

@@ -1,9 +1,19 @@
 {% extends 'base.html' %}
 
-{% block title %}Добавить фильм{% endblock %}
+{% block title %}
+    {% if object%}
+    Изменить фильм
+    {% else %}
+    Добавить фильм
+    {% endif %}
+{% endblock %}
 
 {% block content %}
-    <h1>Добавить новый фильм</h1>
+    {% if object %}
+        <h1>Редактировать фильм</h1>
+    {% else %}
+        <h1>Добавить новый фильм</h1>
+    {% endif %}
 
     <form method="POST" enctype="multipart/form-data">
         {% csrf_token %}

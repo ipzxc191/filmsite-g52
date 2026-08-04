@@ -139,6 +139,9 @@ class Film(models.Model):
         ordering = ['-year']
         verbose_name = 'Фильм'
         verbose_name_plural = 'Фильмы'
+        permissions = [
+            ('can_feature_film', 'Может выделять фильм в подборку'),
+        ]
 
     def __str__(self):
         return f'{self.title} ({self.year})'
@@ -192,6 +195,10 @@ class Review(models.Model):
         ordering = ['-created_at']
         verbose_name = 'Рецензия'
         verbose_name_plural = 'Рецензии'
+        permissions = [
+            ('publish_review', 'Может публиковать рецензии без модерации'),
+            ('moderate_review', 'Может модерировать чужие рецензии'),
+        ]
 
     def __str__(self):
         return f'Рецензия на «{self.film.title}» от {self.author_name}'
