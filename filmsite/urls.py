@@ -20,6 +20,7 @@ admin.site.index_title = 'Панель администратора'
 
 urlpatterns = [
     path('admin/', admin.site.urls),
+    path('auth/', include('social_django.urls', namespace='social')),
     path('accounts/login/', LoginView.as_view(authentication_form=CustomAuthenticationForm), name='login'),
     path('accounts/register/', RegisterView.as_view(), name='register'),
     
